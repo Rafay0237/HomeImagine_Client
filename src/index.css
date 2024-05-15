@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&family=Inter:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    * {
+        @apply m-0 p-0 box-border text-base outline-purple/30 duration-100;
+    }
+
+    html{
+        @apply overflow-x-hidden;
+    }
+
+    body {
+        @apply font-inter font-normal text-black;
+    }
+
+    i {
+        @apply mt-0.5;
+    }
+
+    section{
+        @apply py-4 px-[5vw] md:px-[7vw] lg:px-[10vw];
+    }
+
+    ::selection {
+        @apply bg-purple/30;
+    }
+
+    img{
+        @apply w-full h-full object-cover;
+    }
+
+    .navbar{
+        @apply z-10 sticky  top-0 flex items-center gap-6 lg:gap-12 w-full px-[5vw]  py-2 h-[60px]  shadow-md;
+    }
+
+    .h-cover{
+        @apply min-h-[calc(100vh-80px)];
+    }
+
+    .bg-mobileImg {
+        background-image: url('https://i.pinimg.com/originals/ed/24/d3/ed24d37dfad63bbd8fae98435696d303.jpg');
+        background-size: cover; 
+        background-position: center; 
+    }
+    .bg-desktopImg {
+        background-image: url('https://wallpapercave.com/wp/wp4410743.png');
+        background-size: cover; 
+        background-position: center; 
+    }
+    
+    .center{
+        @apply block mx-auto;
+    }
+
+    .btn-dark{
+        @apply whitespace-nowrap bg-black text-white rounded-full py-3 px-6 text-xl capitalize hover:bg-opacity-80;
+    }
+
+    .btn-light{
+        @apply btn-dark bg-grey text-black;
+    }
+
+    .input-box {
+        @apply w-[100%] rounded-md p-4 bg-grey pl-12 border border-grey focus:bg-transparent placeholder:text-black;
+    }
+
+    input:disabled, input:disabled ~ .input-icon{
+        @apply opacity-50;
+    }
+
+    .input-icon{
+        @apply absolute left-4 top-1/2 -translate-y-1/2;
+    }
+
+    .link{
+        @apply text-dark-grey hover:text-black hover:bg-grey p-3 px-4 block opacity-75;
+    }
+
+    .hide{
+        @apply opacity-0 pointer-events-none duration-100 ;
+    }
+
+    .show{
+        @apply opacity-100 pointer-events-auto;
+    }
+
+
+}
+
+.ce-block__content, .ce-toolbar__content{
+    max-width: 900px;
+}
+
+.cdx-settings-button[data-tune='withBorder'],
+.cdx-settings-button[data-tune='withBackground'],
+.cdx-settings-button[data-tune='stretched'] {
+  display: none;
+}
