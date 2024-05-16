@@ -5,7 +5,7 @@ import { submitData } from "../APICALLS";
 import { IoMdAttach } from "react-icons/io";
 import RenderSendImage from "./RenderSendImage";
 
-const SendMessage = ({ currentChat, setMessages }) => {
+const SendMessage = ({ currentChat, setMessages ,socket}) => {
   const [newMessage, setnewMessage] = useState("");
   const [image, setImage] = useState(undefined);
   const [renderImage, setRenderImage] = useState(undefined);
@@ -21,6 +21,12 @@ const SendMessage = ({ currentChat, setMessages }) => {
       conversationId: currentChat._id,
       text: newMessage,
     };
+    const receiverId=currentChat.members.find((user)=>user!==currentUser.user._id,)
+        socket.current.emit("sendMessage",{
+          senderId:currentUser.user._id,
+          receiverId,
+          text:newMessage
+        })
     submitData("chat/messages/", "POST", message);
     setMessages((prevMessages) => [...prevMessages, message]);
     setnewMessage("");
@@ -79,8 +85,9 @@ const SendMessage = ({ currentChat, setMessages }) => {
           renderImage={renderImage}
           image={image}
           setMessages={setMessages}
-          conversationId={currentChat._id}
+          currentChat={currentChat}
           setShowImage={setShowImage}
+          socket={socket}
         />
       )}
     </div>

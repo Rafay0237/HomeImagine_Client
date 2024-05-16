@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { IoSend } from "react-icons/io5";
 
-const RenderSendImage = ({ renderImage, image, setMessages, conversationId, setShowImage }) => {
+const RenderSendImage = ({ renderImage, image, setMessages, currentChat, setShowImage,socket }) => {
   const { currentUser } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
 
@@ -17,21 +17,28 @@ const RenderSendImage = ({ renderImage, image, setMessages, conversationId, setS
     const formData = new FormData();
     formData.append("image", image);
     formData.append("id", currentUser.user._id);
-    formData.append("conversationId", conversationId);
+    formData.append("conversationId", currentChat._id);
     const res = await fetch("http://localhost:5000/" + "upload-img/chat", {
       method: "POST",
       body: formData,
     });
     const data = await res.json();
     if (data.success) {
-       console.log(data.img)
       setLoading(false);
       let message = {
         sender: currentUser.user._id,
-        conversationId,
-        image: data.img,
+        conversationId:currentChat._id,
+        img: data.img,
       };
       setMessages((prevMessages) => [...prevMessages, message]);
+
+      const receiverId=currentChat.members.find((user)=>user!==currentUser.user._id,)
+        socket.current.emit("sendImage",{
+          senderId:currentUser.user._id,
+          receiverId,
+          img: data.img
+        })
+
       setShowImage(false);
     } else {
       setLoading(false);

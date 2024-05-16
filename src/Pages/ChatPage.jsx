@@ -33,6 +33,15 @@ const ChatPage = () => {
         createdAt: Date.now(),
       });
     });
+
+    socket.current.on("getImage", (data) => {
+      console.log(data)
+      setArrivalMessage({
+        sender: data.senderId,
+        img: data.img,
+        createdAt: Date.now(),
+      });
+    });
   }, []);
 
   useEffect(() => {
@@ -121,7 +130,9 @@ const ChatPage = () => {
           )}
         </div>
         {currentChat && (
-          <SendMessage currentChat={currentChat} setMessages={setMessages} />
+          <SendMessage currentChat={currentChat} 
+          setMessages={setMessages} 
+          socket={socket}/>
         )}
       </div>
     </div>
