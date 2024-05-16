@@ -24,7 +24,7 @@ const Messages = ({ own, message, freindDp, userDp }) => {
       </div>
       <div className={"flex  " + (own ? "justify-end" : "")}>
         <p className="text-sm ml-3 text-white ">{format(message.createdAt)}</p>
-        {own && <p className="text-sm text-white pl-1">seen</p>}
+        {own && message.seen&&<p className="text-sm text-white pl-1">seen</p>}
       </div>
     </div>
   );
@@ -56,9 +56,6 @@ const ImageMessageDisplay = ({ img ,own}) => {
     }
   };
   
-  
-  
-
   return (
     <>
       {!viewImage ? (

@@ -45,12 +45,20 @@ const SendMessage = ({ currentChat, setMessages ,socket}) => {
     setShowImage(true);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); 
+      handleSendMessage(event)
+    }
+  };
+
   return (
     <div className="flex gap-2  bg-[#F0F2F5] p-3">
       {!showImage && (
         <>
           <input
             onChange={(e) => setnewMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
             type="text"
             value={newMessage}
             placeholder={newMessage !== "" ? newMessage : "Type a message"}
