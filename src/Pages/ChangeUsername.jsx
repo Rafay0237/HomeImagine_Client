@@ -26,14 +26,13 @@ const ChangeUsername = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${currentUser.token}`,
+            'Authorization': `Bearer ${currentUser.token}`,
           },
           body: JSON.stringify({
             userName: newName,
             email: currentUser.user.email,
           }),
         });
-        console.log(currentUser.token)
         const data = await res.json();
         if(data.expired===true)
         {

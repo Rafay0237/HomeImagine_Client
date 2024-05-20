@@ -1,3 +1,4 @@
+
 const submitData=async(endPoint,method,data)=>{
   try {
       const response = await fetch(import.meta.env.VITE_APP_API_URL+endPoint, {
@@ -32,14 +33,14 @@ const getData = async (endPoint) => {
   }
 }
 
-const deleteData = async (endPoint, data) => {
+const deleteData = async (endPoint,token) => {
 try {
     const response = await fetch(import.meta.env.VITE_APP_API_URL+endPoint, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(data),
     });
 
     const res = await response.json();

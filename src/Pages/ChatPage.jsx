@@ -82,22 +82,22 @@ const ChatPage = () => {
   }, []);
 
   useEffect(() => {
-      if(currentChat){
-      getData("chat/messages/" + currentChat._id).then((data) => {
-        setMessages(data.messageList);
-      });
-      const freindId =currentChat.members.find((m) => m !== currentUser.user._id);
-      submitData("chat/messages/update-seen","PUT",{
+    if(currentChat){
+    getData("chat/messages/" + currentChat._id).then((data) => {
+      setMessages(data.messageList);
+    });
+    const freindId =currentChat.members.find((m) => m !== currentUser.user._id);
+    submitData("chat/messages/update-seen","PUT",{
+    conversationId:currentChat._id,
+    sender:freindId
+    })
+
+    socket.current.emit("messageSeen",{
       conversationId:currentChat._id,
       sender:freindId
-      })
-
-      socket.current.emit("messageSeen",{
-        conversationId:currentChat._id,
-        sender:freindId
-      })
-    }
-  }, [currentChat]);
+    })
+  }
+}, [currentChat]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -133,9 +133,10 @@ const ChatPage = () => {
           {currentChat && <FreindProfileChatBar onlineUsers={onlineUsers}
           currentChat={currentChat} 
           userId={currentUser.user._id}/>}
+          <div  className="pt-[60px]">
           {messages &&
             messages.map((m) => (
-              <div className="pt-[60px]"
+              <div
                ref={scrollRef} key={m._id}>
                 <Messages
                   own={m.sender === currentUser.user._id}
@@ -145,6 +146,7 @@ const ChatPage = () => {
                 />
               </div>
             ))}
+          </div>
           {!currentChat && (
             <p className="p-5 text-dark-grey lg:text-3xl md:text-2xl sm:text-xl">
               Open Conversation to Start a Chat
