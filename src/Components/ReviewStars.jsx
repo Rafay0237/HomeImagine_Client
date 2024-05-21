@@ -19,10 +19,10 @@ const ReviewStars = ({stars,reviewCount}) => {
     })
 
   return (
-    <div className='flex p-2 '>
-        <p className='text-yellow pr-2 font-lightbold text-xl' >{stars}</p>
+    <div className='flex '>
+        {/* <p className='text-yellow pr-2 font-lightbold text-xl' >{stars}</p> */}
       {ratingStars}
-      <p className='text-dark-grey pl-2 font-lightbold'>{reviewCount} </p>
+      <p className='text-dark-grey pl-2 font-lightbold'>({reviewCount})</p>
     </div>
   )
 }

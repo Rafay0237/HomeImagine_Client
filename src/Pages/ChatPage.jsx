@@ -14,7 +14,7 @@ const ChatPage = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState(null);
   const [freindDp, setFreindDp] = useState("");
-  const [arrivalMessage,setArrivalMessage]=useState(null)
+  const [arrivalMessage, setArrivalMessage] = useState(null);
   const socket = useRef();
   const scrollRef = useRef();
   const socketURL = import.meta.env.VITE_APP_SOCKET_API_URL;
@@ -42,17 +42,20 @@ const ChatPage = () => {
       });
     });
 
-    socket.current.on("updateMessageSeen",(data)=>{
-      console.log(data)
-      let updatedMessages = messages.map(message => {
-        if (message.conversationId === data.conversationId && message.sender === data.sender) {
-          return { ...message, seen: true }; 
+    socket.current.on("updateMessageSeen", (data) => {
+      console.log(data);
+      let updatedMessages = messages.map((message) => {
+        if (
+          message.conversationId === data.conversationId &&
+          message.sender === data.sender
+        ) {
+          return { ...message, seen: true };
         } else {
-          return message; 
+          return message;
         }
       });
-      setMessages(updatedMessages)
-    })
+      setMessages(updatedMessages);
+    });
   }, []);
 
   useEffect(() => {
@@ -82,22 +85,24 @@ const ChatPage = () => {
   }, []);
 
   useEffect(() => {
-    if(currentChat){
-    getData("chat/messages/" + currentChat._id).then((data) => {
-      setMessages(data.messageList);
-    });
-    const freindId =currentChat.members.find((m) => m !== currentUser.user._id);
-    submitData("chat/messages/update-seen","PUT",{
-    conversationId:currentChat._id,
-    sender:freindId
-    })
+    if (currentChat) {
+      getData("chat/messages/" + currentChat._id).then((data) => {
+        setMessages(data.messageList);
+      });
+      const freindId = currentChat.members.find(
+        (m) => m !== currentUser.user._id
+      );
+      submitData("chat/messages/update-seen", "PUT", {
+        conversationId: currentChat._id,
+        sender: freindId,
+      });
 
-    socket.current.emit("messageSeen",{
-      conversationId:currentChat._id,
-      sender:freindId
-    })
-  }
-}, [currentChat]);
+      socket.current.emit("messageSeen", {
+        conversationId: currentChat._id,
+        sender: freindId,
+      });
+    }
+  }, [currentChat]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -130,22 +135,25 @@ const ChatPage = () => {
         flex flex-col  overflow-hidden bg-mobileImg sm:bg-desktopImg`}
       >
         <div className="flex-grow overflow-auto ">
-          {currentChat && <FreindProfileChatBar onlineUsers={onlineUsers}
-          currentChat={currentChat} 
-          userId={currentUser.user._id}/>}
-          <div  className="pt-[60px]">
-          {messages &&
-            messages.map((m) => (
-              <div
-               ref={scrollRef} key={m._id}>
-                <Messages
-                  own={m.sender === currentUser.user._id}
-                  message={m}
-                  userDp={currentUser.user.profilePicture}
-                  freindDp={freindDp}
-                />
-              </div>
-            ))}
+          {currentChat && (
+            <FreindProfileChatBar
+              onlineUsers={onlineUsers}
+              currentChat={currentChat}
+              userId={currentUser.user._id}
+            />
+          )}
+          <div className="pt-[60px]">
+            {messages &&
+              messages.map((m) => (
+                <div ref={scrollRef} key={m._id}>
+                  <Messages
+                    own={m.sender === currentUser.user._id}
+                    message={m}
+                    userDp={currentUser.user.profilePicture}
+                    freindDp={freindDp}
+                  />
+                </div>
+              ))}
           </div>
           {!currentChat && (
             <p className="p-5 text-dark-grey lg:text-3xl md:text-2xl sm:text-xl">
@@ -154,9 +162,11 @@ const ChatPage = () => {
           )}
         </div>
         {currentChat && (
-          <SendMessage currentChat={currentChat} 
-          setMessages={setMessages} 
-          socket={socket}/>
+          <SendMessage
+            currentChat={currentChat}
+            setMessages={setMessages}
+            socket={socket}
+          />
         )}
       </div>
     </div>

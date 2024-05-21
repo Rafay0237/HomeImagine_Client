@@ -19,7 +19,7 @@ const FreindProfileChatBar = ({onlineUsers, currentChat,userId}) => {
 
     
   return (
-  <div className='fixed w-full sm:w-[69%] pr-0 sm:pr-4'>
+  <div className='absolute w-full sm:w-2/3 pr-0 sm:pr-4 '>
         <div className='flex justify-between  h-[60px] bg-[#F0F2F5] '>
     <div className='flex gap-6 p-4 '>
 

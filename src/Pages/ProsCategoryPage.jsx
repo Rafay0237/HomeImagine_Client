@@ -1,8 +1,7 @@
 import ProsCard from "../Components/ProsCard";
 import ProsFilter from "../Components/ProsFilter";
 import Offcanvas from "../Components/Offcanvas";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
 
@@ -11,7 +10,6 @@ const ProsCategoryPage = () => {
 
   const getProProfiles = async () => {
     const data = await getData("pro/get-profiles/" + category);
-    console.log(data);
     if (data.found === false) return null;
     return data.userProfiles;
   };

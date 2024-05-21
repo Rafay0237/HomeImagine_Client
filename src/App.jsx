@@ -15,6 +15,7 @@ import ProsPage from "./Pages/ProsPage";
 import ProsCategoryPage from "./Pages/ProsCategoryPage";
 import ProDetailsPage from "./Pages/ProDetailsPage";
 import ChatPage from "./Pages/ChatPage";
+import ProductCategoryPage from "./Pages/ProductCategoryPage";
 
 import PrivateRoute from "./Components/PrivateRoute";
 import { Toaster } from 'react-hot-toast';
@@ -42,6 +43,7 @@ function App() {
           <Route path="pros/:category/:userId" element={<ProDetailsPage />} />
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/shop/:category" element={<ProductCategoryPage />} />
           <Route path="/chat" element={<ChatPage />} />
         </Route> 
       </Routes>
