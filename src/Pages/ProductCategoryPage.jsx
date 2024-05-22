@@ -3,19 +3,18 @@ import TrendingProducts from "../Components/TrendingProducts";
 
 const ProductCategoryPage = () => {
   const { category } = useParams();
-  console.log(category);
   return (
     <div className="flex justify-center">
-      <div className="mx-auto w-[80%] pt-20">
+      <div className="mx-auto w-[80%] pt-20 ">
         <p className="text-3xl font-lightbold">{category}</p>
         <div>
           {furnitureData.subCategories.map((cat) => (
             <div key={cat.title}>
               <p className="text-2xl font-lightbold py-3">{cat.title}</p>
-              <div className="flex gap-5">
+              <div className="flex gap-5 ">
                 {cat.items.map((item) => (
-                  <div className="relative w-[17rem] bg-grey" key={item.title}>
-                    <Link>
+                  <div className="relative w-[17rem] bg-grey " key={item.title}>
+                    <Link to={item.title}>
                       <div className="flex justify-end text-end">
                         <img
                           src={item.img}

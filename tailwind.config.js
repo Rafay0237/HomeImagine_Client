@@ -34,12 +34,19 @@ export default {
         gelasio: ["'Gelasio'", "serif"]
       },
       fontWeight: {
-        'light': 300, // Custom font weight 'light'
-        'normal': 400, // Custom font weight 'normal'
-        'lightbold': 500, // Custom font weight 'normal'
-        'semibold': 600, // Custom font weight 'semibold'
-        'bold': 700, // Custom font weight 'bold'
-        'extrabold': 800, // Custom font weight 'extrabold'
+        'light': 300,
+        'normal': 400,
+        'lightbold': 500,
+        'semibold': 600,
+        'bold': 700,
+        'extrabold': 800,
+      },
+      boxShadow: {
+        'sm': '0 1px 2px rgba(0, 0, 0, 0.05)',
+        'md': '0 4px 6px rgba(0, 0, 0, 0.1)',
+        'lg': '0 10px 15px rgba(0, 0, 0, 0.1)',
+        'xl': '0 20px 25px rgba(0, 0, 0, 0.15)',
+        'dark-xl': '0 8px 15px rgba(0, 0, 0, 0.5)', // Custom dark shadow
       },
     },
   },

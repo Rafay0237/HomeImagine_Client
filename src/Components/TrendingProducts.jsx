@@ -2,7 +2,7 @@ import ReviewStars from "../Components/ReviewStars";
 
 const TrendingProducts = () => {
   return (
-    <div className="gap-5  overflow-x-auto  scrollbar-hide md:scrollbar-show py-10">
+    <div className="gap-5  overflow-x-auto  scrollbar-hide md:scrollbar-show pb-10">
     <div className="flex  h-16 gap-5 py-10">
       <p className="font-lightbold text-2xl ">Trending Products</p>
       <p className="text-sm font-lightbold text-green bg-[#EDFAF6] h-10 p-2 px-4">
@@ -10,11 +10,13 @@ const TrendingProducts = () => {
       </p>
     </div>
 
-    <div className="flex  gap-10">
+    <div className="flex  gap-5 pt-8  px-4">
       {trendingProducts.map((product) => (
-        <div className=" min-w-48 " key={product.title}>
+        <div key={product.title}
+        className="flex justify-center hover:shadow-dark-xl max-w-48 p-4 rounded-sm">
+        <div className=" max-w-36  " >
           <img
-            className="h-40 w-32 object-contain"
+            className="h-40 w-36 object-contain"
             src={product.img}
             alt="product here"
           />
@@ -27,6 +29,7 @@ const TrendingProducts = () => {
           </div>
           <p className="font-semibold">{product.price}</p>
         </div>
+      </div>        
       ))}
     </div>
   </div>
