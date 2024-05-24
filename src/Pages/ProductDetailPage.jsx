@@ -1,11 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/user/cartSlice";
 import ProductDescription from "../Components/ProductDescription";
 import ReviewStars from "../Components/ReviewStars";
+import toast from "react-hot-toast";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
     const data = await getData("products/" + id);
@@ -18,6 +24,25 @@ const ProductDetailPage = () => {
     isLoading,
     isError,
   } = useQuery("profiles", getProducts);
+
+  const handleQtyChange = (e) => {
+    const value = e.target.value === "" ? "" : Number(e.target.value);
+    if (value === "" || (value >= 1 && value <= 47)) {
+      setQuantity(value);
+    }
+  };
+
+  const handleAddToCart=()=>{
+
+    let productToAdd={
+      title:product.title,
+      qty:quantity,
+      img:product.img,
+      price:product.price
+    }
+   dispatch(addToCart(productToAdd))
+   toast.success("Product Added")
+  }
 
   return (
     <div>
@@ -37,7 +62,7 @@ const ProductDetailPage = () => {
             <div className="flex flex-col w-full md:w-[60%] gap-7 pt-10 ">
               <div className="flex justify-end ">
                 <img
-                  className="object-cover h-[80vh] w-[90%] "
+                  className="object-contain h-[80vh] w-[90%] "
                   src={product.detailImg}
                   alt="display product here"
                 />
@@ -71,10 +96,28 @@ const ProductDetailPage = () => {
               <p className="font-lightbold">Free Shipping </p>
               <p>Est. Delivery:3-7 Days</p>
 
-            {/* // addto cart */}
+              <div className="flex justify-between mt-3 ">
 
+                <div className="flex items-center  gap-3 border border-[#CCCCCC] 
+                px-3 rounded-sm font-lightbold text-[#3c3c3c]">
+                  <p>Qty:</p>
+                  <input
+                    className="h-12 w-12 "
+                    type="number"
+                    onChange={handleQtyChange}
+                    placeholder="1"
+                    value={quantity}
+                  />
+                </div>
 
-
+                <button
+                  className="w-[70%] bg-green text-white 
+             rounded-md font-lightbold p-4"
+             onClick={handleAddToCart}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>

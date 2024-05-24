@@ -27,7 +27,6 @@ const Login = () => {
     e.preventDefault();
     dispatch(Start());
       submitData("users/login","POST",formData).then(data=>{
-        console.log(data)
         if (data.success === false) {
           dispatch(Failure(data));
           return;

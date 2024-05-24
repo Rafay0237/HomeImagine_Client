@@ -4,6 +4,9 @@ const initialState = {
   error: false,
   loading: false,
   currentUser: null,
+  products: [],
+  totalAmount:0,
+  productsQty:0,
 };
 
 const userSlice = createSlice({
@@ -40,7 +43,7 @@ const userSlice = createSlice({
     },
     updateProfilePicture:(state,action)=>{
       state.currentUser.user.profilePicture=action.payload;
-    }
+    },
   },
 });
 
@@ -53,7 +56,7 @@ export const {
   updateUsername,
   deleteAccount,
   signOut,
-  updateProfilePicture
+  updateProfilePicture,
 } = userSlice.actions;
 
 export default userSlice.reducer;

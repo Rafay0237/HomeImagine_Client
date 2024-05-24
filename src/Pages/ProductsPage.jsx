@@ -19,7 +19,7 @@ const ProductsPage = () => {
     data: products,
     isLoading,
     isError,
-  } = useQuery("profiles", getProducts);
+  } = useQuery("products", getProducts);
 
   return (
     <div className="p-5">
