@@ -1,13 +1,12 @@
 import { useSelector ,useDispatch} from "react-redux";
 import OrderDetails from "../Components/OrderDetails";
-import TrendingProducts from "../Components/TrendingProducts"
 import { incrementQty,decrementQty,removeItem,
   clearCart,calculateTotal } from "../redux/user/cartSlice";
 import { MdDelete } from "react-icons/md";
 import { useEffect } from "react";
 
 const CartPage = () => {
-  const { cartItems,totalAmount,productsQty } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch=useDispatch()
 
   useEffect(()=>{
@@ -17,14 +16,15 @@ const CartPage = () => {
   return (
     <div className="flex flex-col  items-center">
       <div className="flex flex-col lg:flex-row pt-5 w-[90%] ">
+
         <div className="w-full lg:w-2/3 p-2">
           <div className="flex justify-between pb-3">
           <p className="text-[24px] font-lightbold">Your Cart</p>
         {  cartItems.length!==0 &&
           <p className="p-3 mr-10 rounded-md text-base font-lightbold
-           text-red-700 hover:cursor-pointer"
+           text-red-700 hover:cursor-pointer hover:text-red"
           onClick={()=>dispatch(clearCart())}>
-            Clear Cart
+            Delete All
             </p>}
           </div>
         {cartItems.length>0 ?
@@ -50,20 +50,20 @@ const CartPage = () => {
               <p className="font-lightbold text-2xl mt-7">${item.price}</p>
 
               <div className="flex gap-3 font-lightbold mt-7">
-                <p onClick={()=>dispatch(decrementQty(item.title))}
-                className="text-2xl bg-red-700 h-9 px-3  rounded-xl text-white hover:cursor-pointer">
+                <p onClick={()=>dispatch(decrementQty(item.id))}
+                className="text-2xl bg-red-700 h-9 px-3  rounded-xl text-white hover:cursor-pointer hover:bg-red">
                   -
                 </p>
                 <p className="text-xl pt-1">{item.qty}</p>
-                <p onClick={()=>dispatch(incrementQty(item.title))}
-                 className="text-2xl bg-green h-9 px-3  rounded-xl text-white hover:cursor-pointer">
+                <p onClick={()=>dispatch(incrementQty(item.id))}
+                 className="text-2xl bg-green h-9 px-3  rounded-xl text-white hover:cursor-pointer hover:bg-dark-green">
                   +
                 </p>
               </div>
             </div>
         
-              <MdDelete className="absolute top-2 right-2 h-6 w-6 hover:cursor-pointer"
-              onClick={()=>dispatch(removeItem(item.title))}/>
+              <MdDelete className="absolute top-2 right-2 h-6 w-6 hover:cursor-pointer hover:text-red-700"
+              onClick={()=>dispatch(removeItem(item.id))}/>
             </div>
             ))
           }
@@ -78,12 +78,9 @@ const CartPage = () => {
         </div>
 
         <div className="w-full lg:w-1/3 ">
-          <OrderDetails totalAmount={totalAmount} productsQty={productsQty} />
+          <OrderDetails showCheckoutBtn={true} />
         </div>
-      </div>
 
-      <div className="w-[90%]">
-      <TrendingProducts/>
       </div>
 
     </div>

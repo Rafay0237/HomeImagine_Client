@@ -1,6 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
 import LoginPage from "./Pages/LoginPage";
 import SignUp from "./Pages/SignupPage";
 import ProfilePage from "./Pages/ProfilePage";
@@ -18,17 +16,17 @@ import ChatPage from "./Pages/ChatPage";
 import ProductCategoryPage from "./Pages/ProductCategoryPage";
 import ProductsPage from "./Pages/ProductsPage";
 import ProductDetailPage from "./Pages/ProductDetailPage";
+import CheckoutPage from "./Pages/CheckoutPage";
 
+import { ConditionalNavbar, ConditionalFooter } from './Components/ConditionalComponents';
 import PrivateRoute from "./Components/PrivateRoute";
 import { Toaster } from 'react-hot-toast';
-import { useSelector } from "react-redux";
 
 function App() {
-  const { currentUser } = useSelector((state) => state.user);
-
+  
   return (
     <BrowserRouter>
-      {currentUser && <Navbar />}
+      <ConditionalNavbar/>
       <Toaster/>
       <Routes>
         <Route path="/sign-up" element={<SignUp />} />
@@ -49,9 +47,10 @@ function App() {
           <Route path="/shop/:category/:subCategory" element={<ProductsPage />} />
           <Route path="/shop/:category/:subCategory/:id" element={<ProductDetailPage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Route> 
       </Routes>
-      {/* {currentUser && <Footer />} */}
+      <ConditionalFooter/>
     </BrowserRouter>
   );
 }

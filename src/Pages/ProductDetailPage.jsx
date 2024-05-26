@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/user/cartSlice";
 import ProductDescription from "../Components/ProductDescription";
 import ReviewStars from "../Components/ReviewStars";
+import TrendingProducts from "../Components/TrendingProducts"
 import toast from "react-hot-toast";
 
 const ProductDetailPage = () => {
@@ -33,8 +34,8 @@ const ProductDetailPage = () => {
   };
 
   const handleAddToCart=()=>{
-
     let productToAdd={
+      id:product._id,
       title:product.title,
       qty:quantity,
       img:product.img,
@@ -91,7 +92,7 @@ const ProductDetailPage = () => {
                 )}
               </div>
 
-              <p className="text-2xl font-semibold">{product.price}</p>
+              <p className="text-2xl font-semibold">${product.price}</p>
 
               <p className="font-lightbold">Free Shipping </p>
               <p>Est. Delivery:3-7 Days</p>
@@ -122,6 +123,11 @@ const ProductDetailPage = () => {
           </div>
         </div>
       )}
+      <div className="flex justify-center ">
+        <div className="w-[90%]">
+      <TrendingProducts/>
+        </div>
+      </div>
     </div>
   );
 };

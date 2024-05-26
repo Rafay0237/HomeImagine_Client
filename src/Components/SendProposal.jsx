@@ -18,9 +18,9 @@ const SendProposal = (userId) => {
     let data={...formData,senderId:currentUser.user._id,userId:userId.userId}
     if(data.email.length<6||data.userName.length<4)
     data={...data,email,userName}
-    if(!data.message)
+    if(data.message.length<5)
     {
-      return toast.error('message cannot be empty');
+      return toast.error('Too short message');
     }
     const response = await submitData("proposal/send", "POST", data);
     toast.success(response.message)

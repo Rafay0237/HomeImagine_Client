@@ -6,7 +6,7 @@ import { BsYoutube } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className=" left-0 bottom-0 bg-[#F0F0F0] w-full p-10 ">
+    <div className=" left-0 bottom-0 bg-[#F0F0F0] w-full p-10 mt-10 ">
       <div className="flex flex-col md:flex-row gap-12 md:gap-0 px-[5%] ">
         <div className="flex gap-[10%] w-full justify-between md:justify-normal ">
           <div>
@@ -19,7 +19,7 @@ const Footer = () => {
 
           <div>
             <p className="font-lightbold pb-6">COMPANY</p>
-            <p className="hover:text-green cursor-pointer">About Houzz</p>
+            <p className="hover:text-green cursor-pointer">About Home Imagine</p>
             <p className="py-6 hover:text-green cursor-pointer">Terms</p>
             <p className="hover:text-green cursor-pointer">Careers</p>
           </div>

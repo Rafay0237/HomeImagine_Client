@@ -11,11 +11,25 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.cartItems.push(action.payload);
+      let newProduct=action.payload
+      let cartItems=state.cartItems
+      let found=cartItems.find(item=>item._id===newProduct._id)
+      if(found){
+       state.cartItems=(cartItems.map(item=>{
+        if(item._id===newProduct._id)
+        {
+          return {...item,qty:item.qty+newProduct.qty}
+        }
+        return item;
+      }))
+      }
+      else{
+        state.cartItems.push(newProduct);
+      }
     },
     decrementQty: (state, action) => {
       let newCartItems = state.cartItems.map((item) => {
-        if (item.title === action.payload) {
+        if (item.id === action.payload) {
           return {
             ...item,
             qty: item.qty > 1 ? item.qty - 1 : 1
@@ -29,7 +43,7 @@ const cartSlice = createSlice({
 
     incrementQty: (state, action) => {
       let newCartItems = state.cartItems.map((item) => {
-        if (item.title === action.payload) {
+        if (item.id === action.payload) {
           return {
             ...item,
             qty: item.qty < 47 ? item.qty + 1 : item.qty,
@@ -42,7 +56,7 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       let newCartItems = state.cartItems.filter(
-        (item) => item.title !== action.payload
+        (item) => item.id !== action.payload
       );
 
       state.cartItems = newCartItems;

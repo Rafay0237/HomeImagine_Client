@@ -9,7 +9,7 @@ const ProductDescription = ({ details }) => {
   },[details])
 
   return (
-    <div className="h-[60vh]  pl-5">
+    <div className="pl-5">
       <div className="flex gap-7 py-5">
         <p
           className={"text-[15px] font-lightbold border-green hover:text-green hover:cursor-pointer"
