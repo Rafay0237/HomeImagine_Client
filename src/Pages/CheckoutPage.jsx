@@ -95,7 +95,7 @@ const CheckoutPage = () => {
                 </div>
 
                 {checkoutPhase===2&&
-                <PaymentWStripe cartItems={cartItems} token={currentUser.token} setCheckoutPhase={setCheckoutPhase}/>
+                <PaymentWStripe cartItems={cartItems} currentUser={currentUser} setCheckoutPhase={setCheckoutPhase}/>
                 }
               </div>
 

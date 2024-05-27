@@ -35,7 +35,7 @@ const OrderDetails = ({showCheckoutBtn}) => {
           <p className="font-lightbold text-green text-2xl">Total</p>
           <p className="font-lightbold text-green text-2xl">${totalAmount}</p>
         </div>
-        {showCheckoutBtn &&
+        {showCheckoutBtn && productsQty>0 &&
         <Link to="/checkout">
         <button className="bg-green text-white font-lightbold p-3 w-full
         rounded-md hover:bg-dark-green"

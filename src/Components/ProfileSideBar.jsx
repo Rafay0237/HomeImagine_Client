@@ -18,12 +18,8 @@ const ProfileSideBar = () => {
     <hr className='text-dark-grey my-2'/>
 
     <p className='font-lightbold mb-3'>Shipping Account</p>
-    <Link to="/cart">
     <p className=' hover:text-green hover:cursor-pointer'>Biling Info</p>
-    </Link>
-    <Link to="/cart">
-    <p className=' hover:text-green hover:cursor-pointer'>Shipping Adress</p>
-    </Link>
+    <p className=' hover:text-green hover:cursor-pointer'>Edit Shipping Adress</p>
 
     </div>
   )

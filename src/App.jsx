@@ -17,6 +17,9 @@ import ProductCategoryPage from "./Pages/ProductCategoryPage";
 import ProductsPage from "./Pages/ProductsPage";
 import ProductDetailPage from "./Pages/ProductDetailPage";
 import CheckoutPage from "./Pages/CheckoutPage";
+import PaymentSuccess from "./Pages/PaymentSuccess";
+import PaymentCancelled from "./Pages/PaymentCancelled";
+import EditShippingAddressPage from "./Pages/EditShippingAddressPage";
 
 import { ConditionalNavbar, ConditionalFooter } from './Components/ConditionalComponents';
 import PrivateRoute from "./Components/PrivateRoute";
@@ -48,6 +51,8 @@ function App() {
           <Route path="/shop/:category/:subCategory/:id" element={<ProductDetailPage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-cancelled" element={<PaymentCancelled />} />
         </Route> 
       </Routes>
       <ConditionalFooter/>
