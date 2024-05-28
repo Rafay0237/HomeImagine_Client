@@ -19,7 +19,9 @@ import ProductDetailPage from "./Pages/ProductDetailPage";
 import CheckoutPage from "./Pages/CheckoutPage";
 import PaymentSuccess from "./Pages/PaymentSuccess";
 import PaymentCancelled from "./Pages/PaymentCancelled";
-import EditShippingAddressPage from "./Pages/EditShippingAddressPage";
+import OrderDetailsPage from "./Pages/OrderDetailsPage";
+import ReviewOrderPage from "./Pages/ReviewOrderPage";
+import ViewOrderPage from "./Pages/ViewOrderPage";
 
 import { ConditionalNavbar, ConditionalFooter } from './Components/ConditionalComponents';
 import PrivateRoute from "./Components/PrivateRoute";
@@ -53,6 +55,9 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-cancelled" element={<PaymentCancelled />} />
+          <Route path="/order" element={<OrderDetailsPage />} />
+          <Route path="/order/:id" element={<ViewOrderPage />} />
+          <Route path="/order-review/:id" element={<ReviewOrderPage />} />
         </Route> 
       </Routes>
       <ConditionalFooter/>

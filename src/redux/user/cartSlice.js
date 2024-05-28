@@ -13,10 +13,10 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       let newProduct=action.payload
       let cartItems=state.cartItems
-      let found=cartItems.find(item=>item._id===newProduct._id)
+      let found=cartItems.find(item=>item._id===newProduct.id)
       if(found){
        state.cartItems=(cartItems.map(item=>{
-        if(item._id===newProduct._id)
+        if(item._id===newProduct.id)
         {
           return {...item,qty:item.qty+newProduct.qty}
         }

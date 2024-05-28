@@ -15,7 +15,7 @@ const CartPage = () => {
 
   return (
     <div className="flex flex-col  items-center">
-      <div className="flex flex-col lg:flex-row pt-5 w-[90%] ">
+      <div className="flex flex-col lg:flex-row pt-5 w-[90%] mb-10 ">
 
         <div className="w-full lg:w-2/3 p-2">
           <div className="flex justify-between pb-3">

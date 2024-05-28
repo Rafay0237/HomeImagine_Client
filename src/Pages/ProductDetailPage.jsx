@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/user/cartSlice";
 import ProductDescription from "../Components/ProductDescription";
@@ -24,7 +24,14 @@ const ProductDetailPage = () => {
     data: product,
     isLoading,
     isError,
-  } = useQuery("profiles", getProducts);
+    refetch
+  } = useQuery("products", getProducts);
+
+  useEffect(() => {
+    if (id) {
+      refetch();
+    }
+  }, [id, refetch]);
 
   const handleQtyChange = (e) => {
     const value = e.target.value === "" ? "" : Number(e.target.value);
@@ -95,7 +102,7 @@ const ProductDetailPage = () => {
               <p className="text-2xl font-semibold">${product.price}</p>
 
               <p className="font-lightbold">Free Shipping </p>
-              <p>Est. Delivery:3-7 Days</p>
+              <p>Est. Delivery: 3-7 Days</p>
 
               <div className="flex justify-between mt-3 ">
 
@@ -112,7 +119,7 @@ const ProductDetailPage = () => {
                 </div>
 
                 <button
-                  className="w-[70%] bg-green text-white 
+                  className="w-[70%] bg-green text-white  hover:bg-dark-green
              rounded-md font-lightbold p-4"
              onClick={handleAddToCart}
                 >

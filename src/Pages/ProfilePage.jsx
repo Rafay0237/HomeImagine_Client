@@ -44,9 +44,11 @@ const ProfilePage = () => {
               Messages
             </p>
           </Link>
+          <Link to="/order">
           <p className="text-dark-grey font-lightbold hover:border-b-2 border-black hover:cursor-pointer">
             Orders
           </p>
+          </Link>
         </div>
 
         <div className="flex mt-12 mb-32 gap-8 md:gap-0">

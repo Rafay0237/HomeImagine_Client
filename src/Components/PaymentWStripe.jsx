@@ -91,7 +91,7 @@ const PaymentWStripe = ({ cartItems, currentUser ,setCheckoutPhase}) => {
         <MdDeliveryDining className="h-10 w-10 absolute top-[25%]" />
       </div> 
       </>:
-      <div className="text-2xl text-dark-grey font-lightbold">
+      <div className="text-2xl text-dark-grey font-lightbold h-28">
         Loading...
         
       </div>}

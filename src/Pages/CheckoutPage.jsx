@@ -29,7 +29,7 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div>
+    <div className="mb-10">
       <div
         className="flex h-[65px]  justify-between px-[5%]
        border-[#e9e8e8] border-b"
@@ -47,7 +47,9 @@ const CheckoutPage = () => {
 
       <div className="flex flex-col  items-center">
         <div className="flex flex-col lg:flex-row pt-5 w-[90%] ">
-          <div className="w-full lg:w-2/3 p-2">
+
+         <div className="w-full lg:w-2/3 p-2">
+         { cartItems.length!==0 &&
             <div className="flex flex-col gap-5">
               <div className=" border-[#e9e8e8] border-b pb-5">
                 <div className={"flex gap-3 "+(checkoutPhase===1? "text-black":"text-light-grey ")}>
@@ -122,9 +124,8 @@ const CheckoutPage = () => {
                 }
               </div>
 
-            </div>
+            </div>}
           </div>
-
           <div className="w-full lg:w-1/3 ">
             <OrderDetails showCheckoutBtn={false} />
           </div>
