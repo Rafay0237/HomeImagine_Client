@@ -87,7 +87,6 @@ const SendMessage = ({ currentChat, setMessages ,socket}) => {
           />
         </>
       )}
-      {/* image render div */}
       {showImage && (
         <RenderSendImage
           renderImage={renderImage}

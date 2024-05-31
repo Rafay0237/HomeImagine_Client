@@ -99,7 +99,13 @@ const ProductDetailPage = () => {
                 )}
               </div>
 
-              <p className="text-2xl font-semibold">${product.price}</p>
+              <div className="flex gap-3 items-center">
+              <p className="text-2xl text-[#393838] font-semibold">${product.price}</p>
+              {product.oldPrice&&
+                <p className="text-base text-dark-grey font-lightbold line-through">${product.oldPrice}</p>}
+              {product.sale&&
+                <p className="text-base text-green font-lightbold">{product.sale}%</p>}
+              </div>
 
               <p className="font-lightbold">Free Shipping </p>
               <p>Est. Delivery: 3-7 Days</p>

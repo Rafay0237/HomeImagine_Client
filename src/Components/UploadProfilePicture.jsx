@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { updateProfilePicture } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
-import { submitData } from "../APICALLS";
 
 const UploadProfilePicture = ({ user }) => {
   const dispatch = useDispatch();
@@ -19,7 +18,12 @@ const UploadProfilePicture = ({ user }) => {
     const formData = new FormData();
     formData.append("image", image);
     formData.append("id", user._id);
-    submitData("upload-img/dp", "POST", formData).then((data) => {
+
+    const res = await fetch(import.meta.env.VITE_APP_API_URL + "upload-img/dp", {
+      method: "POST",
+      body: formData,
+    })
+      await res.json().then((data) => {
       if (data.success) {
         dispatch(updateProfilePicture(data.url));
         setLoading(false);
@@ -56,13 +60,16 @@ const UploadProfilePicture = ({ user }) => {
             alt="Profile "
             onClick={() => fileRef.current.click()}
           />
+
+          <div className="flex justify-center items-center absolute md:right-3 md:bottom-3 right-1 bottom-1 rounded-full bg-green w-6 h-6">
           <p
             onClick={() => fileRef.current.click()}
-            className="absolute md:right-3 md:bottom-3 right-1 bottom-1 rounded-full h-6 w-6 cursor-pointer
-         bg-green text-white  text-2xl flex justify-center items-center"
-          >
+            className=" text-white  text-2xl -mt-[2px]"
+            >
             +
           </p>
+            </div>
+
         </div>
         <div className="text-center mt-2">
           {loading ? (

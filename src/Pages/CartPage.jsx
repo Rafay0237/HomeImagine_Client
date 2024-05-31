@@ -20,14 +20,14 @@ const CartPage = () => {
         <div className="w-full lg:w-2/3 p-2">
           <div className="flex justify-between pb-3">
           <p className="text-[24px] font-lightbold">Your Cart</p>
-        {  cartItems.length!==0 &&
+        {cartItems && cartItems.length!==0 &&
           <p className="p-3 mr-10 rounded-md text-base font-lightbold
            text-red-700 hover:cursor-pointer hover:text-red"
           onClick={()=>dispatch(clearCart())}>
             Delete All
             </p>}
           </div>
-        {cartItems.length>0 ?
+        {cartItems && cartItems.length>0 ?
           <div className="flex flex-col  border-[#E6E6E6] border w-[95%] ">
           {cartItems.map((item)=>(
             <div className="flex flex-col sm:flex-row h-60 sm:h-48 gap-[5%] p-5  justify-between

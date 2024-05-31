@@ -18,7 +18,7 @@ const RenderSendImage = ({ renderImage, image, setMessages, currentChat, setShow
     formData.append("image", image);
     formData.append("id", currentUser.user._id);
     formData.append("conversationId", currentChat._id);
-    const res = await fetch("http://localhost:5000/" + "upload-img/chat", {
+    const res = await fetch(import.meta.env.VITE_APP_API_URL + "upload-img/chat", {
       method: "POST",
       body: formData,
     });

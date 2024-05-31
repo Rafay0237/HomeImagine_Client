@@ -1,7 +1,36 @@
-import React from 'react'
 import SalesCard from '../Components/SalesCard'
+import { useQuery } from "react-query";
+import { getData } from "../APICALLS";
 
 const SalesPage = () => {
+
+  const getProducts = async () => {
+    const data = await getData("products/category/Sale");
+    if (data.found === false) return null;
+    return data.products;
+  };
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useQuery("salesProducts", getProducts);
+
+  if (isLoading)
+    return (
+      <div className="flex h-[80vh] justify-center items-center text-3xl text-dark-grey font-semibold">
+        Loading...
+      </div>
+    );
+
+  if (isError)
+    return (
+      <div className="flex h-[80vh] justify-center items-center text-3xl text-dark-grey font-semibold">
+      {isError}
+      </div>
+    );
+
+
   return (
     <div className='bg-[#F4F4F4]  pb-20 border-b border-dark-grey'>
       <div className='w-full md:w-[80%] pt-10  bg-grey mx-auto '>
@@ -18,23 +47,30 @@ const SalesPage = () => {
       <div className='w-full md:w-[60%]'>
       <img alt='Sale Product'
       className='  object-contain'
-      src='https://st.hzcdn.com/fimgs/09112b8d05de4fe3_8307-w900-h406-b0-p0--home-design.jpg'/>
+      src='https://st.hzcdn.com/fimgs/8bc18b630643b1a3_2583-w900-h406-b0-p0--home-design.jpg'/>
       
       </div>
 
       </div>
-
-      <div className=' p-10 bg-white grid grid-cols-2 md:grid-cols-3 gap-6'>
-      <SalesCard/>
-      <SalesCard/>
-      <SalesCard/>
-      <SalesCard/>
-      <SalesCard/>
-      <SalesCard/>
-      <SalesCard/>
-      
-
+      {products?
+      <div className='p-10 pb-20 bg-white grid grid-cols-2 md:grid-cols-3 gap-16'>
+      { products.map((product=>(
+        <SalesCard product={product} key={product._id}/>
+      )))}
       </div>
+      :
+      <div className="pl-5 pt-10">
+          <p className="text-2xl font-lightbold ">
+            We couldn't find any results
+          </p>
+          <p className="text-2xl font-lightbold py-3">
+            Tips for better results:
+          </p>
+          <li className="text-base">
+            Try removing a filter to see more results
+          </li>
+        </div>
+      }
 
       </div>
 

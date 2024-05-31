@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
 import ProsFilter from "../Components/ProsFilter";
@@ -49,9 +49,7 @@ const ProductsPage = () => {
             {products ? (
               <div className="flex  flex-row gap-5 pt-8  px-0 sm:px-4 flex-wrap">
                 {products?.map((product) => (
-                  <Link to={product._id} key={product._id}>
-                  <ProductCard product={product} key={product._id}/>
-                  </Link>
+                  <ProductCard product={product} key={product._id} />
                 ))}
               </div>
             ) : (
