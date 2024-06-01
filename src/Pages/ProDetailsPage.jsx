@@ -64,7 +64,7 @@ const ProDetailsPage = () => {
             <p className="text-3xl font-lightbold ">
               {profile?.firmName}
             </p>
-            <ReviewStars stars={profile?.rating.stars} reviewCount={profile?.rating.reviewCount} />
+            <ReviewStars stars={profile?.reviews.rating} reviewCount={profile?.reviews.reviewCount} />
           </div>
         </div>
 

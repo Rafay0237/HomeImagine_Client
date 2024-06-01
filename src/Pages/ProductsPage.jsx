@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
-import ProsFilter from "../Components/ProsFilter";
+import ProductsFilter from "../Components/ProductsFilter";
 import Offcanvas from "../Components/Offcanvas";
 import ProductCard from "../Components/ProductCard";
 import TrendingProducts from "../Components/TrendingProducts"
+import { useEffect, useState } from "react";
 
 const ProductsPage = () => {
   const { subCategory } = useParams();
+  const [products,setProducts]=useState(null)
 
   const getProducts = async () => {
     const data = await getData("products/category/" + subCategory);
@@ -16,10 +18,16 @@ const ProductsPage = () => {
   };
 
   const {
-    data: products,
+    data,
     isLoading,
     isError,
   } = useQuery("products", getProducts);
+
+  useEffect(()=>{
+    if(data){
+      setProducts(data)
+    }
+  },[data])
 
   return (
     <div className="p-5">
@@ -29,7 +37,7 @@ const ProductsPage = () => {
           <p className="text-xl font-lightbold border-b-2 border-[#b7b7b7] max-w-60 px-4">
             Filter Search Results
           </p>
-          <ProsFilter />
+          <ProductsFilter setProducts={setProducts} />
         </div>
         <div className="max-w-sm  block lg:hidden  ">
           <Offcanvas />

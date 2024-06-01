@@ -18,13 +18,13 @@ const SalesCard = ({product}) => {
   },[items])
 
   return (
-    <div className='relative h-[20rem] w-[14rem] md:h-[28rem] md:w-[18rem] '>
-
-      <img alt='Sale Item'
-      className='h-[12rem] md:h-[18rem]'
-      src={product.img}/>
+    <div className='relative h-[20rem] w-[14rem] md:h-[28rem] md:w-[18rem]  '>
 
       <Link to={"/shop/sales/vanity/"+product._id}>
+      <img alt='Sale Item'
+      className='h-[12rem] md:h-[18rem] w-[85%]'
+      src={product.img}/>
+
       <p className='h-20 p-2 pt-4 text-base md:text-xl hover:underline'>{product.title}</p>
      <ReviewStars stars={product.rating} reviewCount={product.reviewCount}/>
      <p className='text-white bg-green p-1 px-2 font-lightbold w-[46px] text-sm my-2'>SALE</p>
@@ -35,7 +35,7 @@ const SalesCard = ({product}) => {
      </div>
      </Link>
 
-    <div className='flex items-center justify-center h-8 w-8 hover:cursor-pointer hover:h-9 hover:w-9 absolute top-2 right-2 rounded-full bg-grey'>
+    <div className='flex items-center justify-center h-8 w-8 hover:cursor-pointer hover:h-9 hover:w-9 absolute top-0 right-0 sm:top-1 sm:right-1  rounded-full bg-grey'>
     <FaHeart 
     onClick={()=>dispatch(addToFavItems(product))}
     className={'h-5 w-5 '+ (inFav ? "text-green": "text-dark-grey ")}/>

@@ -18,7 +18,7 @@ const IdeaBooksPage = () => {
       {items && items.length!==0 &&
           <p className="p-3 mr-10 rounded-md text-base font-lightbold
           text-red-700 hover:cursor-pointer hover:text-red"
-          onClick={()=>dispatch(clearItems())}>
+          onClick={()=>{dispatch(clearItems()),toast.success("Ideabook cleared!")}}>
             Delete All
             </p>}
           </div>

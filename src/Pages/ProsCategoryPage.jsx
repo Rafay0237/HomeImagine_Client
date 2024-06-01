@@ -4,9 +4,11 @@ import Offcanvas from "../Components/Offcanvas";
 import { useParams,Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
+import { useEffect, useState } from "react";
 
 const ProsCategoryPage = () => {
   const { category } = useParams();
+  const [proProfiles,setProProfiles]=useState(null)
 
   const getProProfiles = async () => {
     const data = await getData("pro/get-profiles/" + category);
@@ -15,16 +17,21 @@ const ProsCategoryPage = () => {
   };
 
   const {
-    data: proProfiles,
+    data,
     isLoading,
     isError,
   } = useQuery("profiles", getProProfiles);
+
+  useEffect(()=>{
+  if(data){
+    setProProfiles(data)
+  }
+  },[data])
+
+
   return (
     <div className="px-0 md:px-10 py-4 ">
-      <h1 className="text-2xl md:text-3xl py-4 font-lightbold px-4 md:px-0">
-        Tile & Stone Contractors in 30120
-      </h1>
-      <div className=" flex bg-[#143C2D] w-full">
+      <div className=" flex bg-[#1f4e3d] w-full">
         <div className="mx-auto text-white py-14 gap-4 px-5 md:px-0">
           <p className="text-xl md:text-3xl font-semibold">
             Get Matched with Local Professionals
@@ -37,11 +44,11 @@ const ProsCategoryPage = () => {
           <div className="flex items-center w-full ">
             <input
               className="rounded-sm p-4 mt-6 font-lightbold bg-white border-none
-      outline-0 text-black"
+              outline-0 text-black"
               type="text"
-              placeholder="Enter Zip Code"
+              placeholder="What services do you need?"
             />
-            <button className="bg-[#00A287] rounded-sm p-4 -mb-6 inline-block w-30">
+            <button className="bg-green hover:bg-dark-green rounded-sm p-4 -mb-6 inline-block w-30">
               Get Started
             </button>
           </div>
@@ -53,7 +60,7 @@ const ProsCategoryPage = () => {
           <p className="text-xl font-lightbold border-b-2 border-[#b7b7b7] max-w-60 px-4">
             Filter Search Results
           </p>
-          <ProsFilter />
+          <ProsFilter setProProfiles={setProProfiles} />
         </div>
         <div className="max-w-sm  block lg:hidden  ">
           <Offcanvas />
@@ -70,7 +77,7 @@ const ProsCategoryPage = () => {
           </div>
         ) : (
           <div className="w-full lg:w-3/4   ">
-            {proProfiles ? (
+            {proProfiles && proProfiles.length!==0 ? (
               proProfiles.map((profile) => (
                 <Link
                   to={"/pros/" + category + "/" + profile.userId}

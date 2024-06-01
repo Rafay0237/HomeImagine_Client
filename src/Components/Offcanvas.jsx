@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import { IoFilterOutline } from "react-icons/io5";
-import ProsFilter from './ProsFilter';
+import ProsFilter from './ProductsFilter';
 
 
 const Offcanvas = () => {

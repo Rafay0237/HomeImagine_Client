@@ -22,6 +22,7 @@ import PaymentCancelled from "./Pages/PaymentCancelled";
 import OrderDetailsPage from "./Pages/OrderDetailsPage";
 import ReviewOrderPage from "./Pages/ReviewOrderPage";
 import ViewOrderPage from "./Pages/ViewOrderPage";
+import SearchResultsPage from "./Pages/SaerchResultsPage";
 
 import { ConditionalNavbar, ConditionalFooter } from './Components/ConditionalComponents';
 import PrivateRoute from "./Components/PrivateRoute";
@@ -58,6 +59,7 @@ function App() {
           <Route path="/order" element={<OrderDetailsPage />} />
           <Route path="/order/:id" element={<ViewOrderPage />} />
           <Route path="/order-review/:id" element={<ReviewOrderPage />} />
+          <Route path="/shop/search/:search" element={<SearchResultsPage />} />
         </Route> 
       </Routes>
       <ConditionalFooter/>

@@ -2,49 +2,78 @@ import {useState} from 'react'
 import { FaChevronDown } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 
-const ProsFilter = ({setProProfiles}) => {
+const ProductsFilter = ({setProducts}) => {
   const [showRatingOptions,setShowRatingOptions]=useState(false)
-  const [services,setServices]=useState("")
+  const [price,setPrice]=useState(0)
+  const [title,setTitle]=useState("")
 
   const handleRatingFilter=(value)=>{
-    setProProfiles((prevProfiles) => 
-        prevProfiles?.filter(profile => 
-        profile.reviews.rating >=value
+    setProducts((prevProducts) => 
+      prevProducts?.filter(product => 
+        parseFloat(product.rating) >=value
       )
     );
     setShowRatingOptions(false)
   }
 
-  const handleServiceFilter=()=>{
-    setProProfiles((prevProfiles) => 
-      prevProfiles?.filter(profile => 
-        profile.services.includes(services)
+  const handlePriceFilter=()=>{
+    setProducts((prevProducts) => 
+      prevProducts?.filter(product => 
+        parseInt(product.price) <=price
+      )
+    );
+  }
+  
+  const handleKeyDownPrice = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); 
+      handlePriceFilter()
+    }
+  };
+  
+  const handleTitleFilter=()=>{
+    setProducts((prevProducts) => 
+      prevProducts?.filter(product => 
+        product.title.includes(title)
       )
     );
   }
 
-  const handleKeyDownService = (event) => {
+  const handleKeyDownTitle = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault(); 
-      handleServiceFilter()
+      handleTitleFilter()
     }
   };
-  
+
   return (
     <div className='flex  flex-col p-4 h-full relative '>
 
-        <p className='text-xl font-lightbold block'>Services</p>
+        <p className='text-xl font-lightbold block'>keywords</p>
         <div className='relative w-28 mb-4 mt-2'>
       <input className='rounded-md p-3 border-[#b7b7b7] border  h-15'
       type='text'
-      onKeyDown={handleKeyDownService}
-      onChange={(e)=>setServices(e.target.value)}
-      placeholder='Enter keywords'/>
+      onKeyDown={handleKeyDownTitle}
+      onChange={(e)=>setTitle(e.target.value)}
+      placeholder='Search in Title'/>
       <IoSearchOutline
-        onClick={()=>handleServiceFilter}
+        onClick={()=>handleTitleFilter}
         className= "absolute -right-[6.7rem]  top-[1.6rem] -translate-y-1/2 text-[18px] hover:cursor-pointer"
         />
      </div>
+
+     <p className='text-xl font-lightbold block '>Max Price</p>
+     <div className='relative w-28 mb-4 mt-2'>
+      <input className='rounded-md p-3 border-[#b7b7b7] border '
+      type='text'
+      onKeyDown={handleKeyDownPrice}
+      onChange={(e)=>{setPrice(e.target.value)}}
+      placeholder='Price lower than'/>
+      <IoSearchOutline
+          onClick={()=>handlePriceFilter}
+          className="absolute -right-[6.7rem]  top-[1.6rem] -translate-y-1/2 text-[18px] hover:cursor-pointer"
+        />
+      </div>
      
       <div className='flex flex-col  relative mt-4  w-[15rem]'>
       <div className='p-3 rounded-md border border-[#b7b7b7] font-lightbold h-15 '
@@ -85,4 +114,4 @@ const ProsFilter = ({setProProfiles}) => {
   )
 }
 
-export default ProsFilter
+export default ProductsFilter
