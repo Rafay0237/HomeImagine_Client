@@ -66,7 +66,7 @@ const ImageMessageDisplay = ({ img ,own}) => {
             (own ? " bg-green" : "bg-dark-grey")
           }
         >
-          <img className=" p-1  object-cover rounded-lg" src={img} />
+          <img className=" p-1  object-cover rounded-lg hover:cursor-pointer" src={img} />
         </div>
       ) : (
         <div className="h-[90%] w-[98%] bg-black absolute top-[60px] right-3 ">

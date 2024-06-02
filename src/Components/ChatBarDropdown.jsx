@@ -52,7 +52,7 @@ export default function ChatBarDropdown({conversationId}) {
 
             <Menu.Item >
                 <p className='text-dark-grey font-semibold block px-4 py-2 text-sm hover:bg-grey'>
-                Start Contract
+                View Contract
                 </p>
             </Menu.Item>
             <Menu.Item onClick={handleClearChat}>

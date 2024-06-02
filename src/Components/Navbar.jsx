@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { currentUser } = useSelector((state) => state.user);
+  const {cartItems}=useSelector((state)=>state.cart)
+  const {items}=useSelector((state)=>state.ideabook)
   return (
     <div>
       <div className="navbar">
@@ -24,10 +26,18 @@ const Navbar = () => {
         <SearchBar />
 
         <Link to="/ideabooks" >
+        <div className="flex relative">
           <FaHeart className="text-2xl" />
+          {items.length!==0&& <p className="absolute bg-green text-white rounded-full text-[10px] -top-3 -right-2 px-[5px] pt-[1px]">
+            {items.length}</p>}
+          </div>
         </Link>
         <Link to="/cart" >
+          <div className="flex relative">
           <FaShoppingCart className="text-2xl" />
+         {cartItems.length!==0&&  <p className="absolute bg-green text-white rounded-full text-[10px] -top-3 -right-2 px-[5px] pt-[1px]">
+            {cartItems.length}</p>}
+          </div>
         </Link>
         {currentUser ? (
             <Dropdown img={currentUser.user?.profilePicture}/>

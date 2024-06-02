@@ -83,7 +83,7 @@ const SendMessage = ({ currentChat, setMessages ,socket}) => {
           <IoSend
             onClick={handleSendMessage}
             className="p-2 h-10 w-12 hover:cursor-pointer
-             text-black bg-[#4DBC15] rounded-lg mt-1"
+             text-black bg-[#4DBC15] rounded-lg mt-1 hover:bg-[#57af2a]"
           />
         </>
       )}
