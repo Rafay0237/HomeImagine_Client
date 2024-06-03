@@ -23,6 +23,10 @@ import OrderDetailsPage from "./Pages/OrderDetailsPage";
 import ReviewOrderPage from "./Pages/ReviewOrderPage";
 import ViewOrderPage from "./Pages/ViewOrderPage";
 import SearchResultsPage from "./Pages/SaerchResultsPage";
+import ContractPage from "./Pages/ContractPage";
+import ViewContractPage from "./Pages/ViewContractPage";
+import CreateContract from "./Pages/CreateContract";
+import PaymentHistory from "./Pages/PaymentHistory";
 
 import { ConditionalNavbar, ConditionalFooter } from './Components/ConditionalComponents';
 import PrivateRoute from "./Components/PrivateRoute";
@@ -60,6 +64,10 @@ function App() {
           <Route path="/order/:id" element={<ViewOrderPage />} />
           <Route path="/order-review/:id" element={<ReviewOrderPage />} />
           <Route path="/shop/search/:search" element={<SearchResultsPage />} />
+          <Route path="/contract" element={<ContractPage />} />
+          <Route path="/contract/create/:id" element={<CreateContract />} />
+          <Route path="/contract/:id" element={<ViewContractPage />} />
+          <Route path="/contracts/payment-history/" element={<PaymentHistory />} />
         </Route> 
       </Routes>
       <ConditionalFooter/>

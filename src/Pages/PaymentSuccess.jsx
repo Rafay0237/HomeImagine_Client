@@ -26,6 +26,9 @@ const PaymentSuccess = () => {
           <p class=" my-2">
             Thank you for completing your secure online payment.
           </p>
+          <p class=" my-2">
+            It is Recommended for you to drop a review.
+          </p>
           <p> Have a great day! </p>
           <div class="py-10 text-center">
             <Link
