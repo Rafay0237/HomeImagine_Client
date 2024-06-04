@@ -12,6 +12,7 @@ const ViewOrderPage = () => {
   useEffect(() => {
     setLoading(true);
     getData("users/order-detail/" + id).then((data) => {
+      console.log(data)
       if (!data.found) {
         toast.error(data.message);
       } else {
@@ -29,30 +30,38 @@ const ViewOrderPage = () => {
     );
 
   return (
-    <div className="flex justify-center min-h-[70vh] ">
-      <div className="bg-grey pt-5 w-full md:w-[80%] ">
+    <div className="flex flex-col items-center min-h-[70vh] my-10">
+      <div className="flex justify-between w-full md:w-[80%] py-5">
+        <p className="text-xl font-lightbold">
+          Ordered Items: {order?.productsQty}</p>
+        <p className="text-xl font-lightbold">
+          Total Amount: {order?.totalAmount}</p>
+        </div>
+      <div className=" bg-grey  w-full md:w-[80%] ">
         {order?.cartItems.map((item) => (
           <div
             className="flex flex-col sm:flex-row h-60 sm:h-48 gap-[5%] p-5  justify-between
-              border-[#E6E6E6] border-b "
-            key={item.id}
+              border-[#E6E6E6] border-b"
+            key={item._id}
           >
-            <div className="flex justify-between w-full sm:w-[55%]">
+            <div className="flex justify-between items-center w-full sm:w-[55%]">
               <img
                 src={item.img}
                 className="h-32 w-36 object-scale-down"
                 alt="item here"
               />
-              <p className="w-[50%] font-lightbold mt-5">
+              <p className="w-[50%] font-lightbold ">
                 {item.title.slice(0, 50)}
                 {item.title.length > 49 && "..."}
               </p>
             </div>
 
-            <div className="flex justify-between w-full sm:w-[35%]">
-              <p className="font-lightbold text-2xl mt-7">${item.price}</p>
-
-              <div className=" font-lightbold mt-0 sm:mt-7">
+            <div className="flex items-center justify-between w-full sm:w-[35%]">
+              <div className="">
+              <p className="font-lightbold text-xl ">Price:</p>
+              <p className="font-lightbold text-[18px] ">${item.price}</p>
+              </div>
+              <div className=" font-lightbold ">
                 <Link to={"/order-review/" + item.id}>
                   <button className="bg-[#f47e2f] hover:bg-[#ea792e] p-3 w-32 rounded-sm text-white ">
                     Add a Review

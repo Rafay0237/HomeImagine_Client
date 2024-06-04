@@ -1,16 +1,18 @@
 import { useState,useEffect } from "react";
 import { getData } from "../APICALLS";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PaymentHistory = () => {
    const [payments,setPayments]=useState(null)
    const [loading, setLoading] = useState(null);
    const { currentUser } = useSelector((state) => state.user);
+   const navigate=useNavigate()
 
    useEffect(() => {
     setLoading(true);
     getData("contract/payment-history-client/" + currentUser.user._id).then((data) => {
+      console.log(data)
       if (data.success) {
         setPayments(data.payments);
       }
@@ -37,7 +39,7 @@ const PaymentHistory = () => {
       </div>
 
       <div className="flex flex-col gap-16">
-          {payments ?payments.map((payment) => (
+          {payments && payments.length!==0 ?payments.map((payment) => (
                 <PaymentCard payment={payment}  key={payment._id}/>
               )):
               <div className="flex flex-col bg-grey gap-8 p-[10%] rounded-lg items-center">
@@ -49,7 +51,7 @@ const PaymentHistory = () => {
               </p>
               <button
                 className="bg-green hover:bg-dark-green w-60 font-lightbold p-2 rounded-3xl px-5 text-white "
-                // onClick={() => setShowSentContracts(true)}
+                onClick={() => navigate("/contract")}
                 >
                 Back
               </button>
@@ -90,11 +92,14 @@ const PaymentCard = ({ payment }) => {
           ${payment.totalAmount}
           </p>
         </div>
+        {payment.ratingGiven ?
+        <p className="text-dark-grey w-28 text-xl font-lightbold">Paid</p>
+        :
         <Link to={"/pro-review/"+payment._id}>
         <button className="h-10 w-28 bg-green hover:bg-dark-green rounded-md text-white">
           Rate Pro
         </button>
-        </Link>
+        </Link>}
       </div>
     );
   };

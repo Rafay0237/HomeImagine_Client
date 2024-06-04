@@ -51,7 +51,7 @@ const ViewContractPage = () => {
 
   const handlePayment = async () => {
     setLoading(true)
-    let userId=id
+    let userId=currentUser.user._id
     const stripe = await loadStripe(import.meta.env.VITE_APP_STRIPE_KEY);
     try {
       const response = await fetch(
