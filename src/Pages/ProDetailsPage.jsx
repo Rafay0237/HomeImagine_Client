@@ -6,6 +6,7 @@ import ReviewStars from "../Components/ReviewStars";
 import Review from "../Components/Review";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getData } from "../APICALLS";
 
 let images = [
   "https://st.hzcdn.com/fimgs/c4b1ab2d050a08b2_6178-w794-h336-b2-p0--.jpg",
@@ -21,6 +22,7 @@ const ProDetailsPage = () => {
   const ReviewRef = useRef(null);
   const { userId } = useParams();
   const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   const scrollToSection = (ref) => {
     if (ref && ref.current) {
@@ -29,25 +31,21 @@ const ProDetailsPage = () => {
   };
 
   useEffect(() => {
-    const fetchProfileData = async () => {
-      try {
-        const res = await fetch(
-          import.meta.env.VITE_APP_API_URL + "pro/get-profile/" + userId,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const data = await res.json();
-        setProfile(data.userProfile);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProfileData();
+      setLoading(true)
+      getData("pro/get-profile/" + userId).then((data)=>{
+        if(data.found){
+          setProfile(data.userProfile);
+        }
+      })
+      setLoading(false)
   }, []);
+
+  if (loading)
+    return (
+      <div className="flex h-[80vh] justify-center items-center text-2xl font-lightbold">
+        Loading...
+      </div>
+    );
 
   return (
     <div className="flex flex-col md:flex-row p-4 gap-5 mt-2 ">
@@ -103,7 +101,7 @@ const ProDetailsPage = () => {
           <p className="text-2xl font-lightbold ">Projects </p>
         </div>
         <div className="flex flex-wrap pb-10 gap-4 border-b border-light-grey">
-          <Projects />
+          <Projects proId={userId}/>
         </div>
 
         <div ref={BuisnessDetailsRef}>
@@ -111,7 +109,10 @@ const ProDetailsPage = () => {
         </div>
 
         <div ref={ReviewRef}>
-          <Review />
+          {profile && 
+          (<Review firmName={profile?.firmName} proId={profile?.userId}
+            reviewCount={profile?.reviews.reviewCount}/>
+          )}
         </div>
       </div>
 
@@ -127,7 +128,6 @@ function AboutUs({profile}) {
     <div className="p-10 border-b border-light-grey ">
       <p className="font-lightbold py-4 text-xl">
         {profile?.descTitle}
-        Commercial & Residential Architectural Firm Based in Atlanta, GA
       </p>
       <p>
        {profile?.desc}

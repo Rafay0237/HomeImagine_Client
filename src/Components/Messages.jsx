@@ -10,7 +10,7 @@ let messageTextOwn =
 
 const Messages = ({ own, message, freindDp, userDp }) => {
   return (
-    <div className="m-2  ">
+    <div className="m-2">
       <div className={"flex p-2  " + (own ? "justify-end" : "")}>
         <img
           src={own ? userDp : freindDp}
@@ -69,8 +69,8 @@ const ImageMessageDisplay = ({ img ,own}) => {
           <img className=" p-1  object-cover rounded-lg hover:cursor-pointer" src={img} />
         </div>
       ) : (
-        <div className="h-[90%] w-[98%] bg-black absolute top-[60px] right-3 ">
-          <div className="flex justify-between pt-5 px-5 ">
+        <div className="h-full w-full bg-black absolute top-[60px] right-0 ">
+          <div className="flex justify-between  pt-5 px-5 ">
             <MdCancel className="h-10 w-10 text-white hover:cursor-pointer" 
             onClick={()=>setViewImage(false)}/>
             <MdDownload className="h-10 w-10 text-white hover:cursor-pointer" 
@@ -78,7 +78,7 @@ const ImageMessageDisplay = ({ img ,own}) => {
           </div>
           <div className="flex justify-center ">
             <img
-              className=" p-1 w-[60%] h-[80%] object-cover rounded-lg"
+              className=" p-1 w-full  h-[70vh] sm:w-[60%] sm:h-[80%] object-contain rounded-lg"
               src={img}
             />
           </div>

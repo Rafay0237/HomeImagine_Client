@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams,useNavigate } from "react-router-dom";
-import { getData } from "../APICALLS";
+import { getData,submitData } from "../APICALLS";
 import toast from "react-hot-toast";
 import { IoIosStar } from "react-icons/io";
-import { submitData } from "../APICALLS";
 import { useSelector } from "react-redux";
 import { FaLock } from "react-icons/fa";
 
@@ -108,7 +107,7 @@ if (loading)
           <div className="flex justify-center">{ratingStars}</div>
 
           <textarea
-            placeholder="Keep it short and sweet, or tell use the details!"
+            placeholder="Keep it short and sweet, and tell uss the details!"
             className="border-[#CCCCCC] border rounded-sm p-1.5 px-3 w-full my-2 placeholder:text-dark-grey placeholder:font-lightbold "
             rows="5"
             onChange={(e)=>setMessage(e.target.value)}

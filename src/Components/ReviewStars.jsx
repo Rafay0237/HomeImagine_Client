@@ -3,7 +3,7 @@ import { IoIosStar } from "react-icons/io";
 import { IoIosStarHalf } from "react-icons/io";
 import { IoIosStarOutline } from "react-icons/io";
 
-const ReviewStars = ({stars,reviewCount}) => {
+const ReviewStars = ({stars,reviewCount, hideCount}) => {
     const ratingStars=Array.from({length:5},(elem,index)=>{
     let halfStarCheck=index+0.5
     return(
@@ -20,9 +20,9 @@ const ReviewStars = ({stars,reviewCount}) => {
 
   return (
     <div className='flex '>
-        {/* <p className='text-yellow pr-2 font-lightbold text-xl' >{stars}</p> */}
       {ratingStars}
-      <p className='text-dark-grey pl-2 font-lightbold'>({reviewCount})</p>
+      {!hideCount &&
+      <p className='text-dark-grey pl-2 font-lightbold'>({reviewCount})</p>}
     </div>
   )
 }
