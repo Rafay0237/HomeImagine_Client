@@ -8,12 +8,6 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getData } from "../APICALLS";
 
-let images = [
-  "https://st.hzcdn.com/fimgs/c4b1ab2d050a08b2_6178-w794-h336-b2-p0--.jpg",
-  "https://st.hzcdn.com/fimgs/19d1c1c30546f118_6824-w794-h336-b2-p0--.jpg",
-  "https://st.hzcdn.com/fimgs/bdb1ac2f0546f10e_0771-w794-h336-b2-p0--.jpg",
-  "https://st.hzcdn.com/fimgs/e891aa250546f10b_9398-w794-h336-b2-p0--.jpg",
-];
 
 const ProDetailsPage = () => {
   const AboutUsRef = useRef(null);
@@ -50,7 +44,7 @@ const ProDetailsPage = () => {
   return (
     <div className="flex flex-col md:flex-row p-4 gap-5 mt-2 ">
       <div className=" w-full md:w-[70%]  ">
-        <Slider images={images} />
+        <Slider images={profile?.sliderImages} />
 
         <div className="flex p-8 ">
           <img

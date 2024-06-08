@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getData } from "../APICALLS";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/user/cartSlice";
 import ProductDescription from "../Components/ProductDescription";
@@ -13,8 +13,9 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const scrollRef=useRef()
 
-  const getProducts = async () => {
+  const getProduct = async () => {
     const data = await getData("products/" + id);
     if (data.found === false) return null;
     return data.product;
@@ -25,13 +26,17 @@ const ProductDetailPage = () => {
     isLoading,
     isError,
     refetch
-  } = useQuery("products", getProducts);
+  } = useQuery("product", getProduct);
 
   useEffect(() => {
     if (id) {
       refetch();
     }
   }, [id, refetch]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [product]);
 
   const handleQtyChange = (e) => {
     const value = e.target.value === "" ? "" : Number(e.target.value);
@@ -53,7 +58,7 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <div>
+    <div ref={scrollRef}>
       {isLoading ? (
         <div className="flex justify-center w-full mt-12">
           <p className="text-3xl">Loading...</p>

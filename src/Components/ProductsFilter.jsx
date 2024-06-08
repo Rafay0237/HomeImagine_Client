@@ -34,7 +34,7 @@ const ProductsFilter = ({setProducts}) => {
   const handleTitleFilter=()=>{
     setProducts((prevProducts) => 
       prevProducts?.filter(product => 
-        product.title.includes(title)
+        product.title.toLowerCase().includes(title.toLowerCase())
       )
     );
   }
@@ -57,7 +57,7 @@ const ProductsFilter = ({setProducts}) => {
       onChange={(e)=>setTitle(e.target.value)}
       placeholder='Search in Title'/>
       <IoSearchOutline
-        onClick={()=>handleTitleFilter}
+        onClick={handleTitleFilter}
         className= "absolute -right-[6.7rem]  top-[1.6rem] -translate-y-1/2 text-[18px] hover:cursor-pointer"
         />
      </div>
@@ -70,7 +70,7 @@ const ProductsFilter = ({setProducts}) => {
       onChange={(e)=>{setPrice(e.target.value)}}
       placeholder='Price lower than'/>
       <IoSearchOutline
-          onClick={()=>handlePriceFilter}
+          onClick={handlePriceFilter}
           className="absolute -right-[6.7rem]  top-[1.6rem] -translate-y-1/2 text-[18px] hover:cursor-pointer"
         />
       </div>

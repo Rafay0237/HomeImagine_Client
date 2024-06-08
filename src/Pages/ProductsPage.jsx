@@ -54,7 +54,7 @@ const ProductsPage = () => {
           </div>
         ) : (
           <div className="w-full lg:w-3/4   ">
-            {products ? (
+            {products&& products.length!==1 ? (
               <div className="flex  flex-row gap-5 pt-8  px-0 sm:px-4 flex-wrap">
                 {products?.map((product) => (
                   <ProductCard product={product} key={product._id} />
