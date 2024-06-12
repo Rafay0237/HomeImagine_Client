@@ -96,7 +96,7 @@ const ReviewOrderPage = () => {
             {product?.title}
           </p>
 
-          <p className="text-xl font-semibold">${product?.price}</p>
+          <p className="text-xl font-semibold">Rs. {product?.price}</p>
 
           <p className="font-lightbold">
             Tell us what you think about your new product.

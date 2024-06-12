@@ -33,7 +33,7 @@ const OrderDetails = ({showCheckoutBtn}) => {
       <div>
         <div className="flex justify-between pb-4">
           <p className="font-lightbold text-green text-2xl">Total</p>
-          <p className="font-lightbold text-green text-2xl">${totalAmount}</p>
+          <p className="font-lightbold text-green text-2xl">Rs. {totalAmount}</p>
         </div>
         {showCheckoutBtn && productsQty>0 &&
         <Link to="/checkout">

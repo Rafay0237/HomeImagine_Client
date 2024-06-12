@@ -14,7 +14,7 @@ const Slider = ({images}) => {
 
       {images?.map(img=>(
           <img 
-          className={'object-contain h-[55vh] w-[90%] mx-auto rounded-md shadow-lg'
+          className={'object-contain h-[25vh] sm:h-[35vh] lg:h-[55vh] w-[90%] mx-auto rounded-md shadow-lg'
           +(images[currentImage]!=img&&" hidden")}
           src={img} alt='Project Wallparers'
           key={img} />

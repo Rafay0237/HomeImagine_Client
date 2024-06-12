@@ -30,8 +30,8 @@ const SalesCard = ({product}) => {
      <p className='text-white bg-green p-1 px-2 font-lightbold w-[46px] text-sm my-2'>SALE</p>
      
      <div className='flex items-center gap-2'>
-     <p className="text-[18px] text-[#393838] font-lightbold">${product.price}</p>
-     <p className="text-[14px] text-dark-grey font-lightbold line-through">${product.oldPrice}</p>
+     <p className="text-[18px] text-[#393838] font-lightbold">Rs.{product.price}</p>
+     <p className="text-[14px] text-dark-grey font-lightbold line-through">Rs.{product.oldPrice}</p>
      </div>
      </Link>
 

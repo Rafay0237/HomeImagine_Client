@@ -111,7 +111,7 @@ const ProDetailsPage = () => {
       </div>
 
       <div className="py-4 ">
-        <SendProposal userId={userId}/>
+        <SendProposal userId={userId} firmName={profile?.firmName}/>
       </div>
     </div>
   );

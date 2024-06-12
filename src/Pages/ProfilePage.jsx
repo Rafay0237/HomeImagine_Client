@@ -52,7 +52,9 @@ const ProfilePage = () => {
         </div>
 
         <div className="flex mt-12 mb-32 gap-8 md:gap-0">
+        <div className="hidden md:block w-[25%]">
           <ProfileSideBar />
+          </div>
 
           <div className="flex flex-col w-full md:w-[65%] px-3 gap-2 ">
             <h1 className="text-bold text-3xl mb-8">Account Information</h1>
@@ -92,6 +94,9 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
+        <div className="block md:hidden w-[70%] mb-16">
+          <ProfileSideBar/>
+          </div>
       </div>
     </div>
   );

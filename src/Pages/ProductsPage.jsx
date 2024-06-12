@@ -5,11 +5,12 @@ import ProductsFilter from "../Components/ProductsFilter";
 import Offcanvas from "../Components/Offcanvas";
 import ProductCard from "../Components/ProductCard";
 import TrendingProducts from "../Components/TrendingProducts"
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useRef} from "react";
 
 const ProductsPage = () => {
   const { subCategory } = useParams();
   const [products,setProducts]=useState(null)
+  const scrollRef=useRef()
 
   const getProducts = async () => {
     const data = await getData("products/category/" + subCategory);
@@ -29,8 +30,12 @@ const ProductsPage = () => {
     }
   },[data])
 
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [products]);
+
   return (
-    <div className="p-5">
+    <div className="p-5" ref={scrollRef}>
 
       <div className="flex flex-col lg:flex-row mt-10 lg:mt-20 gap-4 ">
         <div className="w-1/4  mx-auto lg:mx-0  hidden lg:block ">

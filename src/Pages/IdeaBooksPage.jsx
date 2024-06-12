@@ -71,7 +71,7 @@ const ProductCard = ({product}) => {
               reviewCount={product.reviewCount}
               />
           </div>
-          <p className="font-semibold">{product.price}</p>
+          <p className="font-lightbold">Rs. {product.price}</p>
               </Link>
           <button className="w-full p-2 my-2 rounded-sm text-white font-lightbold bg-green hover:bg-dark-green"
           onClick={handleAddToCart}>

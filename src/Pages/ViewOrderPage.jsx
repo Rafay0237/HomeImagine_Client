@@ -35,7 +35,7 @@ const ViewOrderPage = () => {
         <p className="text-xl font-lightbold">
           Ordered Items: {order?.productsQty}</p>
         <p className="text-xl font-lightbold">
-          Total Amount: {order?.totalAmount}</p>
+          Total Amount: Rs. {order?.totalAmount}</p>
         </div>
       <div className=" bg-grey  w-full md:w-[80%] ">
         {order?.cartItems.map((item) => (
@@ -59,7 +59,7 @@ const ViewOrderPage = () => {
             <div className="flex items-center justify-between w-full sm:w-[35%]">
               <div className="">
               <p className="font-lightbold text-xl ">Price:</p>
-              <p className="font-lightbold text-[18px] ">${item.price}</p>
+              <p className="font-lightbold text-[18px] ">Rs. {item.price}</p>
               </div>
               <div className=" font-lightbold ">
                 <Link to={"/order-review/" + item.id}>

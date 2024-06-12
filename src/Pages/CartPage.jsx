@@ -47,7 +47,7 @@ const CartPage = () => {
               </div>
 
               <div className="flex justify-between w-full sm:w-[35%]">
-              <p className="font-lightbold text-2xl mt-7">${item.price}</p>
+              <p className="font-lightbold text-2xl mt-7">Rs. {item.price}</p>
 
               <div className="flex gap-3 font-lightbold mt-7">
                 <p onClick={()=>dispatch(decrementQty(item.id))}

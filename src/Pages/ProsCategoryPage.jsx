@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 const ProsCategoryPage = () => {
   const { category } = useParams();
   const [proProfiles,setProProfiles]=useState(null)
+  const [services,setServices]=useState("")
 
   const getProProfiles = async () => {
     const data = await getData("pro/get-profiles/" + category);
@@ -28,6 +29,20 @@ const ProsCategoryPage = () => {
   }
   },[data])
 
+  const handleServiceFilter=()=>{
+    setProProfiles((prevProfiles) => 
+      prevProfiles?.filter(profile => 
+        profile.services.includes(services)
+      )
+    );
+  }
+
+  const handleKeyDownService = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); 
+      handleServiceFilter()
+    }
+  };
 
   return (
     <div className="px-0 md:px-10 py-4 ">
@@ -47,8 +62,11 @@ const ProsCategoryPage = () => {
               outline-0 text-black"
               type="text"
               placeholder="What services do you need?"
+              onKeyDown={handleKeyDownService}
+              onChange={(e)=>setServices(e.target.value)}
             />
-            <button className="bg-green hover:bg-dark-green rounded-sm p-4 -mb-6 inline-block w-30">
+            <button className="bg-green hover:bg-dark-green rounded-sm p-4 -mb-6 inline-block w-30"
+            onClick={handleServiceFilter}>
               Get Started
             </button>
           </div>

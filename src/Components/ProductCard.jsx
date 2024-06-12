@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
             reviewCount={product.reviewCount}
           />
         </div>
-        <p className="font-semibold">{product.price}</p>
+        <p className="font-lightbold">Rs. {product.price}</p>
         </Link>
       </div>
       <div className="flex items-center justify-center h-8 w-8 hover:cursor-pointer hover:h-9 hover:w-9 absolute top-2 right-2 rounded-full bg-grey">

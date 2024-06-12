@@ -33,7 +33,7 @@ const Review = ({firmName,proId,reviewCount}) => {
        <ReviewCard key={review._id} review={review} />
      )):
      <div>
-      No reviews Yet
+      No review comments yet
       </div>
     }
     </div>

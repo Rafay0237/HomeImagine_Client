@@ -40,7 +40,7 @@ const OrderDetailsPage = () => {
            <p className="text-xl">Total Products: {order.productsQty}</p>
            </div>
            <div className="flex gap-5 sm:gap-[10%] items-center">
-           <p className="text-xl">Total Amount:  ${order.totalAmount}</p>
+           <p className="text-xl">Total Amount: Rs. {order.totalAmount}</p>
            <Link to={"/order/"+order._id}>
            <button className="bg-green hover:bg-dark-green p-3 w-28 sm:w-48 rounded-sm text-white text-sm sm:text-base "
            >View Order Items</button>

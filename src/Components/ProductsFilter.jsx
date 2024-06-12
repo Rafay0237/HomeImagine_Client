@@ -76,7 +76,7 @@ const ProductsFilter = ({setProducts}) => {
       </div>
      
       <div className='flex flex-col  relative mt-4  w-[15rem]'>
-      <div className='p-3 rounded-md border border-[#b7b7b7] font-lightbold h-15 '
+      <div className='p-3 rounded-md border border-[#b7b7b7] font-lightbold h-15 hover:cursor-pointer'
       onClick={()=>setShowRatingOptions(!showRatingOptions)}>
         Select Rating</div>
        <FaChevronDown className='absolute right-3  top-6 -translate-y-1/2 

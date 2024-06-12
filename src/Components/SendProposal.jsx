@@ -3,7 +3,7 @@ import { submitData } from "../APICALLS";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-const SendProposal = (userId) => {
+const SendProposal = ({userId,firmName}) => {
   const {currentUser}=useSelector(state=>state.user)
   const {email,userName}=currentUser.user
   const [formData, setformData] = useState({
@@ -30,7 +30,7 @@ const SendProposal = (userId) => {
     <div className="w-[90%] md:w-[27%] block md:fixed p-4 border border-light-grey 
     rounded-md mx-auto md:mx-0 bg-white ">
       <p className="font-[590] text-lg w-full my-3 ">
-        Contact The Baldwin Architectural Group
+        Contact The {firmName}
       </p>
 
       <input
