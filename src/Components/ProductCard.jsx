@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
           src={product.img}
           alt="product here"
         />
-        <p className="h-22 sm:h-16 w-full">
+        <p className="h-24 sm:h-20 w-full">
           {product.title.length > 60
             ? product.title.slice(0, 60) + "..."
             : product.title}

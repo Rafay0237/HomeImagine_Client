@@ -23,7 +23,7 @@ const ProsCard = ({profile}) => {
         </div>
        <p className='pl-10 py-2 '>Rating: 5.0</p>
        <p className='border lg:border-0 border-[#b7b7b7] p-4 rounded-md 
-        w-full h-24'>{profile.desc.slice(0,100)+'...'}</p>
+        w-full h-32 xs:h-24 '>{profile.desc.slice(0,100)+'...'}</p>
        <p className='pt-5 text-right text-green  font-lightbold'>Read More &gt;</p>
       </div>
 

@@ -53,7 +53,7 @@ const SalesPage = () => {
 
       </div>
       {products?
-      <div className='p-10 pb-20 bg-white grid grid-cols-2 md:grid-cols-3 gap-16'>
+      <div className='p-5 xs:p-10 pb-20 bg-white grid grid-cols-2 md:grid-cols-3 gap-16 bg-red'>
       { products.map((product=>(
         <SalesCard product={product} key={product._id}/>
       )))}

@@ -34,10 +34,10 @@ const CheckoutPage = () => {
         className="flex h-[65px]  justify-between px-[5%]
        border-[#e9e8e8] border-b"
       >
-        <div className="flex gap-5 items-center">
+        <div className="flex gap-3 sm:gap-5 items-center">
           <SiHomeadvisor className="h-12 w-12 text-[#4DBC15]" />
-          <p className="text-[22px] font-[590]">Home Imagine</p>
-          <p className="text-[18px] font-lightbold">Checkout</p>
+          <p className="text-xl sm:text-[22px] font-[590]">Home Imagine</p>
+          <p className="text-base sm:text-[18px] font-lightbold">Checkout</p>
         </div>
 
         <div className="flex items-center underline hover:cursor-pointer">
@@ -69,14 +69,14 @@ const CheckoutPage = () => {
                   <div className="flex justify-end gap-3 my-4">
                     <button
                       onClick={() => setShowEdit(true)}
-                      className="border-green  w-[30%] border p-3 px-5 text-green font-lightbold rounded-md hover:bg-[#fafafa]"
+                      className="border-green  border p-3 px-5 text-green font-lightbold rounded-md hover:bg-[#fafafa]"
                     >
                       Edit/Add New Address
                     </button>
                     <button
                       disabled={loading}
                       onClick={checkShippingAddressExists}
-                      className="bg-green w-[20%] p-3 px-5 text-white font-lightbold rounded-md hover:bg-dark-green"
+                      className="bg-green p-3 px-5 text-white font-lightbold rounded-md hover:bg-dark-green"
                     >
                      {!loading? "Continue" :"Loading..."}
                     </button>

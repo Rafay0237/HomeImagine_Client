@@ -12,7 +12,6 @@ const ViewOrderPage = () => {
   useEffect(() => {
     setLoading(true);
     getData("users/order-detail/" + id).then((data) => {
-      console.log(data)
       if (!data.found) {
         toast.error(data.message);
       } else {
@@ -39,10 +38,9 @@ const ViewOrderPage = () => {
         </div>
       <div className=" bg-grey  w-full md:w-[80%] ">
         {order?.cartItems.map((item) => (
-          <div
+          <div key={item._id}
             className="flex flex-col sm:flex-row h-60 sm:h-48 gap-[5%] p-5  justify-between
               border-[#E6E6E6] border-b"
-            key={item._id}
           >
             <div className="flex justify-between items-center w-full sm:w-[55%]">
               <img

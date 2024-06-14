@@ -18,11 +18,11 @@ const SalesCard = ({product}) => {
   },[items])
 
   return (
-    <div className='relative h-[20rem] w-[14rem] md:h-[28rem] md:w-[18rem]  '>
+    <div className='relative w-[10rem]  xs:w-[14rem]   md:w-[18rem] '>
 
       <Link to={"/shop/sales/vanity/"+product._id}>
       <img alt='Sale Item'
-      className='h-[12rem] md:h-[18rem] w-[85%]'
+      className='h-[10rem] xs:h-[12rem]  md:h-[18rem] w-[85%]'
       src={product.img}/>
 
       <p className='h-20 p-2 pt-4 text-base md:text-xl hover:underline'>{product.title}</p>

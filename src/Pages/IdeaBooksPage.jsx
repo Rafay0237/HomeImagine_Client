@@ -13,17 +13,17 @@ const IdeaBooksPage = () => {
   return (
     <div className='flex flex-col items-center min-h-[80vh] '>
 
-      <div className="flex w-[80%] justify-between pt-10">
+      <div className="flex w-[80%]  justify-between py-7 ">
         <p className="text-2xl ">Your Ideabook</p>
       {items && items.length!==0 &&
-          <p className="p-3 mr-10 rounded-md text-base font-lightbold
+          <p className="  rounded-md text-base font-lightbold
           text-red-700 hover:cursor-pointer hover:text-red"
           onClick={()=>{dispatch(clearItems()),toast.success("Ideabook cleared!")}}>
             Delete All
             </p>}
           </div>
 
-      <div className='flex flex-wrap gap-10 w-[80%] pb-10 '>
+      <div className='flex flex-wrap gap-2 xs:gap-10 w-[97%] xs:w-[90%] sm:w-[80%] pb-10 '>
       {items.length!==0 ? items.map((item)=>(
         <ProductCard product={item} key={item._id}/>
       ))
@@ -64,7 +64,11 @@ const ProductCard = ({product}) => {
             src={product.img}
             alt="product here"
             />
-          <p className="h-14 hover:underline">{product.title}</p>
+          <p className="h-24 sm:h-20 w-full ">
+          {product.title.length > 60
+            ? product.title.slice(0, 60) + "..."
+            : product.title}
+           </p>
           <div className="py-3">
             <ReviewStars
               stars={product.rating}

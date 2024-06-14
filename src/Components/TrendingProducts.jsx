@@ -36,9 +36,9 @@ const TrendingProducts = () => {
 
   return (
     <div className="gap-5  overflow-x-auto  scrollbar-hide md:scrollbar-show">
-      <div className="flex  h-16 gap-5 py-10">
+      <div className="flex  h-16 gap-2 xs:gap-5 py-10 ">
         <p className="font-lightbold text-2xl ">Trending Products</p>
-        <p className="text-sm font-lightbold text-green bg-[#EDFAF6] h-10 p-2 px-4">
+        <p className="text-[10px] font-lightbold text-green bg-[#EDFAF6] h-10 p-2 px-4">
           BEST SELLER
         </p>
       </div>
