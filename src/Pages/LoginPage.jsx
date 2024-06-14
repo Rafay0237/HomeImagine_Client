@@ -58,7 +58,7 @@ const Login = () => {
         />
         <button
           className="bg-green text-white 
-        p-3 rounded-lg hover:opacity-80 mt-2 mx-auto w-3/6
+        p-3 rounded-lg hover:opacity-80 mt-2 mx-auto w-[15.2rem] 
         "
         >
           {loading ? "Loading..." : "Login"} 
