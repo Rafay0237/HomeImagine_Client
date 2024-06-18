@@ -60,7 +60,7 @@ const ProductsPage = () => {
         ) : (
           <div className="w-full lg:w-3/4   ">
             {products&& products.length!==1 ? (
-              <div className="flex  flex-row gap-5 pt-8  px-0 sm:px-4 flex-wrap">
+              <div className="flex  flex-row gap-5 pt-8  px-0 sm:px-4 flex-wrap ">
                 {products?.map((product) => (
                   <ProductCard product={product} key={product._id} />
                 ))}
@@ -83,7 +83,7 @@ const ProductsPage = () => {
       </div>
 
     <img
-    className="w-full p-10 py-16 hover:cursor-pointer"
+    className="hidden sm:block p-10 py-16 hover:cursor-pointer object-contain"
     src="https://st.hzcdn.com/static/shop-houzz/furniture/trending_banner_living-room-furniture_dweb.png"
     alt="sofa sale"
     />

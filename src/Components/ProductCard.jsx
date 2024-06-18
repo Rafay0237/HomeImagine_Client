@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
   
 
   return (
-    <div className="flex justify-center  hover:shadow-xl w-48 sm:w-56 p-4 rounded-sm relative">
+    <div className="flex justify-center  hover:shadow-xl w-40 xs:w-52 sm:w-56 p-4 rounded-sm relative ">
       <div className="max-w-40 sm:max-w-48">
       <Link to={product._id}
       className="hover:cursor-pointer">

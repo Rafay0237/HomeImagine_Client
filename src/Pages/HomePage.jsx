@@ -14,7 +14,7 @@ const HomePage = () => {
         />
         
         <div className='flex flex-col md:absolute md:top-0 md:left-0 lg:left-[10%] md:w-[70%] lg:w-[50%] p-8 md:p-12 sm:p-20 gap-5 bg-white items-center'>
-        <p className='text-5xl text-center font-inter'>Exclusive Vanity Products Sale</p>
+        <p className='text-3xl sm:text-5xl text-center font-inter'>Exclusive Vanity Products Sale</p>
         <p className='text-xl font-inter'>Get your glo on the glow, indoor and out.</p>
         <Link to="/sales"
         className='w-1/3 '>
