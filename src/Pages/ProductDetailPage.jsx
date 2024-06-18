@@ -75,7 +75,7 @@ const ProductDetailPage = () => {
             <div className="flex flex-col w-full md:w-[60%] gap-7 pt-10 ">
               <div className="flex justify-end ">
                 <img
-                  className="object-contain h-[80vh] w-[90%] "
+                  className="object-contain max-h-[50vh] sm:max-h-[70vh] w-[90%] "
                   src={product.detailImg}
                   alt="display product here"
                 />
