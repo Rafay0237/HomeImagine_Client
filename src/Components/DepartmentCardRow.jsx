@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const DepartmentCardRow = ({ data,  homePage, endPoint }) => {
   return (
     <div className="overflow-x-auto h-52 scrollbar-hide md:scrollbar-show">
-      <div className=" flex gap-4  ">
+      <div className=" flex gap-4 ">
         {data?.map((data) => (
               <Link
                 to={homePage ? endPoint + data.title : data.title}

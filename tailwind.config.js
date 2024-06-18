@@ -68,9 +68,6 @@ export default {
         '.scrollbar-hide::-webkit-scrollbar': {
           display: 'none',
         },
-        '.scrollbar-hide': {
-          overflow: 'hidden', /* Hide scrollbar in Chrome, Edge, and Safari */
-        },
         '.scrollbar-show::-webkit-scrollbar': {
           display: 'auto',
         },

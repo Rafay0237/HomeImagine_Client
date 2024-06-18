@@ -70,7 +70,7 @@ const ProductDetailPage = () => {
           </div>
         </div>
       ) : (
-        <div className="p-5">
+        <div className="p-5 ">
           <div className="flex flex-col sm:flex-row ">
             <div className="flex flex-col w-full md:w-[60%] gap-7 pt-10 ">
               <div className="flex justify-end ">
@@ -84,7 +84,7 @@ const ProductDetailPage = () => {
               <ProductDescription details={product.detail} />
             </div>
 
-            <div className="flex flex-col gap-5 h-[80vh] w-full md:w-[40%]  p-10 ">
+            <div className="flex flex-col gap-5  w-full md:w-[40%]  p-10 ">
               <p className="text-2xl sm:text-[25px] font-lightbold">
                 {product.title}
               </p>
