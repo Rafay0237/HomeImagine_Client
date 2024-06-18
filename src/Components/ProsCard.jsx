@@ -6,7 +6,7 @@ const ProsCard = ({profile}) => {
     return (
     <div className='flex flex-col md:flex-row gap-3 border-b  border-[#b7b7b7] mx-20 md:mx-0 mb-2'>
 
-        <img className='h-full w-72 lg:w-80 object-contain  '
+        <img className='h-full w-72 xs:w-full md:w-80 object-contain  '
         src={profile.bgImg}
         alt="Wallpaper"/>
 
@@ -23,7 +23,7 @@ const ProsCard = ({profile}) => {
         </div>
        <p className='pl-10 py-2 '>Rating: 5.0</p>
        <p className='border lg:border-0 border-[#b7b7b7] p-4 rounded-md 
-        w-full h-32 xs:h-24 '>{profile.desc.slice(0,100)+'...'}</p>
+        w-full   '>{profile.desc.slice(0,100)+'...'}</p>
        <p className='pt-5 text-right text-green  font-lightbold'>Read More &gt;</p>
       </div>
 

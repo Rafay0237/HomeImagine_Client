@@ -37,7 +37,7 @@ const Projects = ({proId}) => {
 
 function ProjectCard({project}){
     return(
-        <div className="h-[220px] md:h-[360px] w-[40%] md:w-[45%] rounded-lg shadow-lg">
+        <div className="h-[240px] xs:h-[220px] md:h-[360px] w-[40%] md:w-[45%] rounded-lg shadow-lg">
         <img className="h-40  md:h-80 rounded-md object-cover"
         src={project.img}
         alt='Project Wallpaper'
