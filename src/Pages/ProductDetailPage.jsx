@@ -105,9 +105,9 @@ const ProductDetailPage = () => {
               </div>
 
               <div className="flex gap-3 items-center">
-              <p className="text-2xl text-[#393838] font-semibold">${product.price}</p>
+              <p className="text-2xl text-[#393838] font-semibold">Rs. {product.price}</p>
               {product.oldPrice&&
-                <p className="text-base text-dark-grey font-lightbold line-through">${product.oldPrice}</p>}
+                <p className="text-base text-dark-grey font-lightbold line-through">Rs. {product.oldPrice}</p>}
               {product.sale&&
                 <p className="text-base text-green font-lightbold">{product.sale}%</p>}
               </div>
