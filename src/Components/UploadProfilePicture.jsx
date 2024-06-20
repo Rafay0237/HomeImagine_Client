@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { updateProfilePicture } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { IoIosAddCircle } from "react-icons/io";
 
 const UploadProfilePicture = ({ user }) => {
   const dispatch = useDispatch();
@@ -53,34 +54,23 @@ const UploadProfilePicture = ({ user }) => {
         onChange={(e) => setImage(e.target.files[0])}
       ></input>
       <div className="block">
-        <div className="relative ">
-          <img
-            className="h-20 w-20 object-cover rounded-full md:h-32 md:w-32 self-center cursor-pointer "
-            src={user.profilePicture}
-            alt="Profile "
-            onClick={() => fileRef.current.click()}
-          />
-
-          <div className="flex justify-center items-center absolute md:right-3 md:bottom-3 right-1 bottom-1 rounded-full bg-green w-6 h-6">
-          <p
-            onClick={() => fileRef.current.click()}
-            className=" text-white  text-2xl -mt-[2px]"
-            >
-            +
-          </p>
-            </div>
-
+      <div className="relative ">
+        <img
+          className="h-20 w-20 object-cover rounded-full md:h-32 md:w-32 self-center cursor-pointer "
+          src={user.profilePicture}
+          alt="Profile " onClick={()=>fileRef.current.click()}
+        />
+        <IoIosAddCircle onClick={()=>fileRef.current.click()}
+        className="absolute md:right-3 md:bottom-3 right-1 lg:right-0 bottom-1 rounded-full h-5 w-5 sm:h-7 sm:w-7 cursor-pointer
+          text-green  text-2xl bg-white"/>
         </div>
-        <div className="text-center mt-2">
+        <div className="text-center mt-2  w-20 md:w-32 ">
           {loading ? (
             <p className="text-dark-grey font font-semibold">loading...</p>
+          ) : imageError.success ? (
+            <p className="text-green text-sm sm:text-base">{imageError.message}</p>
           ) : (
-            ""
-          )}
-          {imageError.success ? (
-            <p className="text-green ">{imageError.message}</p>
-          ) : (
-            <p className="text-red-700 ">{imageError.message}</p>
+            <p className="text-red-700 text-sm sm:text-base">{imageError.message}</p>
           )}
         </div>
       </div>
