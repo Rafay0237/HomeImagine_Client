@@ -6,6 +6,7 @@ import SendMessage from "../Components/SendMessage";
 import { useSelector } from "react-redux";
 import { getData, submitData } from "../APICALLS";
 import { io } from "socket.io-client";
+import { TfiGithub } from "react-icons/tfi";
 
 const ChatPage = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -13,6 +14,7 @@ const ChatPage = () => {
   const [messages, setMessages] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState(null);
+  const [loading,setLoading]=useState(false)
   const [freindDp, setFreindDp] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const socket = useRef();
@@ -79,9 +81,12 @@ const ChatPage = () => {
   }, [currentUser.user._id]);
 
   useEffect(() => {
+    setLoading(true)
     getData("chat/conversation/" + currentUser.user._id).then((data) => {
+      console.log(data)
       setConversations(data.conversation);
     });
+    setLoading(false)
   }, []);
 
   useEffect(() => {
@@ -116,7 +121,12 @@ const ChatPage = () => {
         }
       flex flex-col w-1/3  gap-2 pt-2 bg-[#FFFFFF]`}
       >
-        {conversations?.map((conversation) => (
+        {loading? 
+        <div className="flex justify-center items-center h-full w-full  ">
+         <p className="text-3xl">Loading...</p>
+          </div>
+          :conversations && conversations.length!==0 ?
+          conversations.map((conversation) => (
           <div
             onClick={() => setCurrentChat(conversation)}
             key={conversation._id}
@@ -128,7 +138,12 @@ const ChatPage = () => {
               onlineUsers={onlineUsers}
             />
           </div>
-        ))}
+        )):
+         <div className="flex flex-col gap-5 justify-center items-center h-full w-full ">
+         <p className="text-3xl">No Conversations yet.</p>
+         <p className="text-2xl"> Connect with People to have a Chat.</p>
+         <TfiGithub className="h-36 w-36"/>
+          </div>}
       </div>
       <div
         className={`${currentChat ? "sm:w-2/3 w-full" : "hidden sm:flex w-2/3"}
