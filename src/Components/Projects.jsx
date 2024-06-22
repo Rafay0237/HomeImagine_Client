@@ -27,7 +27,7 @@ const Projects = ({proId}) => {
     projects.map((project)=>(
       <ProjectCard project={project} key={project._id}/>
     ))
-    :<div className="pl-[2.5%]">
+    :<div className="p-3 xs:p-8">
       no projects posted by this pro
       </div>}
     

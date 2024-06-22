@@ -43,24 +43,24 @@ const ProDetailsPage = () => {
 
   return (
     <div className="flex flex-col md:flex-row p-4 gap-5 mt-2 ">
-      <div className=" w-full md:w-[70%]  ">
+      <div className=" w-full md:w-[70%] ">
         <Slider images={profile?.sliderImages} />
 
-        <div className="flex p-8 ">
+        <div className="flex items-center p-3 xs:p-8 ">
           <img
-            className="h-32 w-32 object-contain"
+            className="h-24 w-24 xs:h-32 xs:w-32 object-contain"
             src={profile?.logo}
             alt="Logo"
           />
           <div className="mt-3 p-5">
-            <p className="text-3xl font-lightbold ">
+            <p className="text-2xl xs:text-3xl font-lightbold ">
               {profile?.firmName}
             </p>
             <ReviewStars stars={profile?.reviews.rating} reviewCount={profile?.reviews.reviewCount} />
           </div>
         </div>
 
-        <div className="flex gap-10 px-10 ">
+        <div className="flex gap-5 xs:gap-10 px-4 xs:px-10  ">
           <p
             onClick={() => scrollToSection(AboutUsRef)}
             className="text-dark-grey font-lightbold border-b-2 border-white 
@@ -87,6 +87,7 @@ const ProDetailsPage = () => {
             Reviews
           </p>
         </div>
+        
         <div ref={AboutUsRef}>
           <AboutUs profile={profile} />
         </div>
@@ -119,7 +120,7 @@ const ProDetailsPage = () => {
 
 function AboutUs({profile}) {
   return (
-    <div className="p-10 border-b border-light-grey ">
+    <div className="p-3 xs:p-8 border-b border-light-grey ">
       <p className="font-lightbold py-4 text-xl">
         {profile?.descTitle}
       </p>
