@@ -13,7 +13,7 @@ export const ConditionalNavbar = () => {
 export const ConditionalFooter = () => {
   const location = useLocation();
 
-  const showFooter = location.pathname !== "/chat"&& location.pathname !== "/login" && location.pathname !== "/sign-up";
+  const showFooter = !["/chat", "/login", "/sign-up"].includes(location.pathname);
 
   return showFooter ? <Footer /> : null;
 };

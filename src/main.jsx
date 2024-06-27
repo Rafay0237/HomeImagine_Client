@@ -24,7 +24,7 @@ root.render(
       <QueryClientProvider client={queryClient}>
     <App />
       </QueryClientProvider>
-      </GoogleOAuthProvider>;
+      </GoogleOAuthProvider>
     </PersistGate>
   </Provider>
 );
