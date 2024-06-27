@@ -1,22 +1,19 @@
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 export const ConditionalNavbar = () => {
   const location = useLocation();
-  const { currentUser } = useSelector((state) => state.user);
 
-  const showNavbar = location.pathname !== "/checkout";
+  const showNavbar = location.pathname !== "/checkout" ;
 
-  return currentUser && showNavbar ? <Navbar /> : null;
+  return  showNavbar ? <Navbar /> : null;
 };
 
 export const ConditionalFooter = () => {
   const location = useLocation();
-  const { currentUser } = useSelector((state) => state.user);
 
-  const showFooter = location.pathname !== "/chat";
+  const showFooter = location.pathname !== "/chat"&& location.pathname !== "/login" && location.pathname !== "/sign-up";
 
-  return currentUser && showFooter ? <Footer /> : null;
+  return showFooter ? <Footer /> : null;
 };

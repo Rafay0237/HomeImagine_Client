@@ -42,12 +42,8 @@ function App() {
       <Routes>
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route element={<PrivateRoute />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/change-username" element={<ChangeUsername />} />
-          <Route path="/change-password" element={<ChangePassword />} />
-          <Route path="/cart" element={<CartPage />} />
+        <Route path="/cart" element={<CartPage />} />
           <Route path="/ideabooks" element={<IdeaBooksPage />} />
           <Route path="/pros" element={<ProsPage />} />
           <Route path="pros/:category" element={<ProsCategoryPage />} />
@@ -57,6 +53,11 @@ function App() {
           <Route path="/shop/:category" element={<ProductCategoryPage />} />
           <Route path="/shop/:category/:subCategory" element={<ProductsPage />} />
           <Route path="/shop/:category/:subCategory/:id" element={<ProductDetailPage />} />
+          <Route path="/shop/search/:search" element={<SearchResultsPage />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/change-username" element={<ChangeUsername />} />
+          <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
@@ -64,7 +65,6 @@ function App() {
           <Route path="/order" element={<OrderDetailsPage />} />
           <Route path="/order/:id" element={<ViewOrderPage />} />
           <Route path="/order-review/:id" element={<ReviewOrderPage />} />
-          <Route path="/shop/search/:search" element={<SearchResultsPage />} />
           <Route path="/contract" element={<ContractPage />} />
           <Route path="/contract/create/:id" element={<CreateContract />} />
           <Route path="/contract/:id" element={<ViewContractPage />} />

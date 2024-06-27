@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import SubNavbar from "./SubNavbar";
 import SearchBar from "./SearchBar";
 import Dropdown from "./Dropdown";
+import { useLocation } from 'react-router-dom';
 
 import { Link } from "react-router-dom";
 
@@ -42,8 +43,8 @@ const Navbar = () => {
         {currentUser ? (
             <Dropdown img={currentUser.user?.profilePicture}/>
         ) : (
-          <Link to="/login" className="btn-dark py-2">
-            Login
+          <Link to={location.pathname === "/login"?"sign-up":"/login"} className="btn-dark py-2">
+           { location.pathname === "/login" ?"Sign-up" :"Login"}
           </Link>
         )}
       </div>

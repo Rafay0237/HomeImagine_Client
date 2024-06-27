@@ -30,7 +30,7 @@ const Footer = () => {
             <p className="font-lightbold pb-6">GET HELP</p>
             <p className="hover:text-green cursor-pointer">Your Orders</p>
             <p className="py-6 hover:text-green cursor-pointer">
-              Shipping and delivery{" "}
+              Shipping and delivery
             </p>
             <p className="hover:text-green cursor-pointer">Return Policy</p>
           </div>
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

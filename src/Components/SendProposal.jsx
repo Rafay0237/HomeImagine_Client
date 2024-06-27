@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 
 const SendProposal = ({userId,firmName}) => {
   const {currentUser}=useSelector(state=>state.user)
-  const {email,userName}=currentUser.user
+  const {email,userName}=currentUser?.user? currentUser.user:{email:"",userName:""}
+  const [loading,setLoading]=useState(false)
   const [formData, setformData] = useState({
     email,userName
   });
@@ -15,15 +16,24 @@ const SendProposal = ({userId,firmName}) => {
   };
 
   const handeSubmit=async()=>{
-    let data={...formData,senderId:currentUser.user._id,userId:userId.userId}
-    if(data.email.length<6||data.userName.length<4)
-    data={...data,email,userName}
-    if(data.message.length<5)
-    {
-      return toast.error('Too short message');
+    setLoading(true)
+    if(!currentUser){
+      toast.error('Login to send a message!');
+      setLoading(false)
+      return
     }
-    const response = await submitData("proposal/send", "POST", data);
-    toast.success(response.message)
+    let data={...formData,senderId:currentUser.user._id,userId:userId}
+    if(data.email.length<6||data.userName.length<4){
+      toast.error('Enter valid data!');
+    }else if(data.message.length<5)
+    {
+      toast.error('Too short message');
+      
+    }else{
+      const response = await submitData("proposal/send", "POST", data);
+      toast.success(response.message)
+    }
+    setLoading(false)
   }
 
   return (
@@ -69,8 +79,8 @@ const SendProposal = ({userId,firmName}) => {
       ></textarea>
 
       <button className="bg-green text-white font-bold p-3 my-2 w-full rounded-[4px]"
-      onClick={handeSubmit}>
-        Send Message
+      onClick={handeSubmit} disabled={loading}>
+       { loading ? "Loading..." : "Send Message"}
       </button>
     </div>
   );

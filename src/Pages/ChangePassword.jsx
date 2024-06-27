@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updatePassword ,signOut} from "../redux/user/userSlice";
+import toast from "react-hot-toast"
 
 
 const ChangePassword = () => {
@@ -33,7 +34,7 @@ const ChangePassword = () => {
       });
       return;
     }
-    if (formData.confirmPassword.length < 8) {
+    if (formData.confirmPassword.length < 6) {
       setSuccessMessage({
         message: "New Password Length can't be less than 8",
       });
@@ -45,7 +46,7 @@ const ChangePassword = () => {
       newPassword: formData.newPassword,
       email: currentUser.user.email,
     };
-    const res = await fetch('http://localhost:5000/'+"users/change-password", {
+    const res = await fetch(import.meta.env.VITE_APP_API_URL+"users/change-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,17 +55,21 @@ const ChangePassword = () => {
       body: JSON.stringify(sendObj),
     });
     const data = await res.json();
-    if(data.expired===true)
-        {
-        dispatch(signOut)
-        }
+    if(data.expired){
+      toast.error(data.message)
+      dispatch(signOut())
+      navigate('/login')
+      return
+      }
     if (data.success) {
       dispatch(updatePassword(sendObj.newPassword));
       setLoading(false);
       setSuccessMessage({ message: data.message, success: true });
+      toast.success(data.message)
       navigate('/profile')
     } else {
       setLoading(false);
+      toast.error(data.message)
       setSuccessMessage({ message: data.message, success: false });
     }
   };
