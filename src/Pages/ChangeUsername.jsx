@@ -12,9 +12,11 @@ const ChangeUsername = () => {
     const navigate=useNavigate()
     const [successMessage, setSuccessMessage] = useState({});
     const [newName,setnewName]=useState("")
+    const [loading,setLoading]=useState(false)
     const {currentUser}=useSelector((state)=>state.user)
 
   const changeUserName = async () => {
+
         if (newName.length < 8 || newName === "") {
           setSuccessMessage({
             message: "Username should be atleast 8 characters!",
@@ -22,6 +24,7 @@ const ChangeUsername = () => {
           });
           return;
         }
+        setLoading(true)
         const res = await fetch('http://localhost:5000/'+"users/change-username", {
           method: "POST",
           headers: {
@@ -45,6 +48,7 @@ const ChangeUsername = () => {
         } else {
           setSuccessMessage({ message: data.message, success: false });
         }
+        setLoading(false)
       };
 
   return (
@@ -64,8 +68,9 @@ const ChangeUsername = () => {
             className="bg-green text-white text-sm rounded-md
        p-3 w-3/5 mx-auto"
             onClick={changeUserName}
+            disabled={loading}
           >
-            Change
+           {loading?"Loading..." : "Change"}
           </button>
           <p className={successMessage.success? "text-green h-5 -mt-3":
           " text-red-700 h-5 -mt-3"}>
