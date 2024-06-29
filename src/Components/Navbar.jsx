@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import SubNavbar from "./SubNavbar";
 import SearchBar from "./SearchBar";
 import Dropdown from "./Dropdown";
-import { useLocation } from 'react-router-dom';
 
 import { Link } from "react-router-dom";
 

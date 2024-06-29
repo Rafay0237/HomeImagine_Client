@@ -14,7 +14,7 @@ const Footer = () => {
               <SiHomeadvisor className="h-12 w-12 text-[#4DBC15]" />
               <p className="text-[25px] font-semibold">Home Imagine</p>
             </div>
-            <p className="p-5">© 2024 Houzz Inc.</p>
+            <p className="p-5">© 2024 HomeImagine Inc.</p>
           </div>
 
           <div>

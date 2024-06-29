@@ -31,6 +31,7 @@ const SendProposal = ({userId,firmName}) => {
       
     }else{
       const response = await submitData("proposal/send", "POST", data);
+      console.log(response)
       toast.success(response.message)
     }
     setLoading(false)
